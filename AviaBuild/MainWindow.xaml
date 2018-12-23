@@ -8,13 +8,84 @@
         mc:Ignorable="d"
         Title="MainWindow"
         WindowStartupLocation="CenterScreen"
-        Height="800" Width="1280"
+        Height="800"
+        SizeToContent="Width"
+        ResizeMode="CanMinimize"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
-        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
-    <Grid>
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="productViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Product}, CreateList=True}"/>
+        <CollectionViewSource x:Key="productPlanesViewSource" Source="{Binding Planes, Source={StaticResource productViewSource}}"/>
+        <CollectionViewSource x:Key="productRocketsViewSource" Source="{Binding Rockets, Source={StaticResource productViewSource}}"/>
+    </Window.Resources>
 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <materialDesign:ColorZone Grid.ColumnSpan="2"
+            Mode="PrimaryDark"
+            CornerRadius="3"
+            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+            x:Name="ColorZoneTop">
+            <Menu Background="{Binding Background, ElementName=ColorZoneTop}" Grid.ColumnSpan="2"
+                  Foreground="{Binding Foreground, ElementName=ColorZoneTop}">
+                <MenuItem Header="Current account: Admin">
+                    <MenuItem Header="Log out" />
+                </MenuItem>
+                <MenuItem Header="Go to procedures"/>
+            </Menu>
+        </materialDesign:ColorZone>
+
+        <GroupBox Grid.Row="1" Header="Choose table" Margin="5" MinWidth="150">
+            <ItemsControl MinWidth="150">
+                <Button Margin="0, 5" HorizontalContentAlignment="Stretch">
+                    <Button.Content>
+                        <Grid>
+                            <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Planes" TextAlignment="Center" Margin="0,1,0,0" />
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <Button Margin="0, 5" Content="Rockets"  />
+            </ItemsControl>
+        </GroupBox>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Header="Current table" Margin="5">
+                <DataGrid DataContext="{StaticResource productRocketsViewSource}" x:Name="rocketsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" HorizontalAlignment="Center" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="idRocketColumn" Binding="{Binding IdRocket}" Header="Id Rocket" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="rocketNameColumn" Binding="{Binding RocketName}" Header="Rocket Name" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="rocketProductIDColumn" Binding="{Binding RocketProductID}" Header="Rocket Product ID" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="rocketTypeColumn" Binding="{Binding RocketType}" Header="Rocket Type" Width="SizeToHeader"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Refresh" Margin="5"/>
+                <Button Grid.Column="1" Content="Save" Click="BtnSave_Click" Margin="5"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
