@@ -94,6 +94,13 @@
     <Compile Include="EngTehWorkerProf.cs">
       <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Bindings.cs" />
+    <Compile Include="Helpers\Converters.cs" />
+    <Compile Include="Helpers\ConvertorBase.cs" />
+    <Compile Include="Helpers\DateNotifier.cs" />
+    <Compile Include="Helpers\GridViewSort.cs" />
+    <Compile Include="Helpers\StaticClasses.cs" />
+    <Compile Include="Helpers\ValidationRules.cs" />
     <Compile Include="Plane.cs">
       <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
     </Compile>

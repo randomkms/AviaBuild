@@ -1,7 +1,9 @@
-﻿using System;
+﻿using AviaBuild.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,11 +27,11 @@ namespace AviaBuild
         {
             this.context = context;
             InitializeComponent();
-            DataContext = this;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var areaViewSource = (CollectionViewSource)this.FindResource("areaViewSource");
             var planesViewSource = (CollectionViewSource)this.FindResource("planeViewSource");
             var rocketViewSource = (CollectionViewSource)this.FindResource("rocketViewSource");
             var productViewSource = (CollectionViewSource)this.FindResource("productViewSource");
@@ -46,6 +48,7 @@ namespace AviaBuild
             var workerViewSource = (CollectionViewSource)this.FindResource("workerViewSource");
             var workerProfViewSource = (CollectionViewSource)this.FindResource("workerProfViewSource");
 
+            context.Areas.Load();
             context.Planes.Load();
             context.Rockets.Load();
             context.Products.Load();
@@ -62,6 +65,7 @@ namespace AviaBuild
             context.Workers.Load();
             context.WorkerProfs.Load();
 
+            areaViewSource.Source = context.Areas.Local;
             planesViewSource.Source = context.Planes.Local;
             rocketViewSource.Source = context.Rockets.Local;
             productViewSource.Source = context.Products.Local;
@@ -73,7 +77,7 @@ namespace AviaBuild
             profViewSource.Source = context.Profs.Local;
             testEquipmentViewSource.Source = context.TestEquipments.Local;
             testerViewSource.Source = context.Testers.Local;
-            testLabViewSource.Source = context.Planes.Local;
+            testLabViewSource.Source = context.TestLabs.Local;
             workViewSource.Source = context.Works.Local;
             workerViewSource.Source = context.Workers.Local;
             workerProfViewSource.Source = context.WorkerProfs.Local;
@@ -110,6 +114,58 @@ namespace AviaBuild
                         break;
                 }
             }
+        }
+
+        private void BtnChooseTable_Click(object sender, RoutedEventArgs e)
+        {
+            var name = (sender as FrameworkElement).Name.Substring(3);
+            if (Enum.TryParse(name, out TableNames tableName))
+                DataHandler.Instance.CurrTable = tableName;
+        }
+    }
+
+    public class AccTypeToVisibilityConverter : ConvertorBase<AccTypeToVisibilityConverter>
+    {
+        private static readonly HashSet<TableNames> architectTables = new HashSet<TableNames>
+        {
+            TableNames.Planes,
+            TableNames.Rockets,
+            TableNames.Products,
+            TableNames.Works,
+            TableNames.TestLabs,
+            TableNames.TestEquipments,
+            TableNames.Cehs,
+            TableNames.Areas,
+            TableNames.Brigades
+        };
+
+        private static readonly HashSet<TableNames> hrManagerTables = new HashSet<TableNames>
+        {
+            TableNames.Workers,
+            TableNames.WorkerProfs,
+            TableNames.Profs,
+            TableNames.EngTehWorkers,
+            TableNames.EngTehWorkerProfs,
+            TableNames.EngTehProfs,
+            TableNames.Testers
+        };
+
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (!(value is AccountTypes accType)) return DependencyProperty.UnsetValue;
+            Enum.TryParse(parameter.ToString(), out TableNames tableName);
+
+            switch (accType)
+            {
+                case AccountTypes.Admin:
+                    return Visibility.Visible;
+                case AccountTypes.Architect:
+                    return architectTables.Contains(tableName) ? Visibility.Visible : Visibility.Collapsed;
+                case AccountTypes.HRManager:
+                    return hrManagerTables.Contains(tableName) ? Visibility.Visible : Visibility.Collapsed;
+            }
+
+            return Visibility.Collapsed;
         }
     }
 }

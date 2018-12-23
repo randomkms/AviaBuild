@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:helpers="clr-namespace:AviaBuild.Helpers"
         xmlns:local="clr-namespace:AviaBuild"
         mc:Ignorable="d"
         Title="MainWindow"
@@ -32,8 +33,9 @@
         <CollectionViewSource x:Key="workViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Work}, CreateList=True}"/>
         <CollectionViewSource x:Key="workerViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Worker}, CreateList=True}"/>
         <CollectionViewSource x:Key="workerProfViewSource" d:DesignSource="{d:DesignInstance {x:Type local:WorkerProf}, CreateList=True}"/>
+        <CollectionViewSource x:Key="areaViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Area}, CreateList=True}"/>
     </Window.Resources>
-    <Grid>
+    <Grid DataContext="{Binding Source={x:Static local:DataHandler.Instance}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="auto" />
@@ -58,17 +60,138 @@
         </materialDesign:ColorZone>
 
         <GroupBox Grid.Row="1" Header="Choose table" Margin="5" MinWidth="150">
-            <ItemsControl MinWidth="150">
-                <Button Margin="0, 5" HorizontalContentAlignment="Stretch">
-                    <Button.Content>
-                        <Grid>
-                            <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
-                            <TextBlock Text="Planes" TextAlignment="Center" Margin="0,1,0,0" />
-                        </Grid>
-                    </Button.Content>
-                </Button>
-                <Button Margin="0, 5" Content="Rockets"  />
-            </ItemsControl>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl MinWidth="230" Margin="3,0">
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Areas}" x:Name="BtnAreas" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Areas" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Planes}" x:Name="BtnPlanes" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Planes" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Rockets}" x:Name="BtnRockets" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Rockets" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Products}" x:Name="BtnProducts" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Products" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Brigades}" x:Name="BtnBrigades" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Brigades" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Cehs}" x:Name="BtnCehs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Cehs" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=EngTehProfs}" x:Name="BtnEngTehProfs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="EngTehProfs" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=EngTehWorkers}" x:Name="BtnEngTehWorkers" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="EngTehWorkers" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=EngTehWorkerProfs}" x:Name="BtnEngTehWorkerProfs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="EngTehWorkerProfs" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Profs}" x:Name="BtnProfs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Profs" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=TestEquipments}" x:Name="BtnTestEquipments" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="TestEquipments" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Testers}" x:Name="BtnTesters" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Testers" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=TestLabs}" x:Name="BtnTestLabs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="TestLabs" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Works}" x:Name="BtnWorks" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Works" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Workers}" x:Name="BtnWorkers" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Workers" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=WorkerProfs}" x:Name="BtnWorkerProfs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
+                        <Button.Content>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <TextBlock Text="WorkerProfs" TextAlignment="Center" Margin="0,1,0,0" />
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </ItemsControl>
+            </ScrollViewer>
         </GroupBox>
 
         <Grid Grid.Row="1" Grid.Column="1">
@@ -78,8 +201,14 @@
             </Grid.RowDefinitions>
 
             <GroupBox Header="Current table" Margin="5">
-                <Grid>
-                    <DataGrid DataContext="{StaticResource planeViewSource}" x:Name="planeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <Grid MinWidth="400">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Areas}" x:Name="areaDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource areaViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="cehIdColumn1" Binding="{Binding CehId}" Header="Ceh Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="idAreaColumn" Binding="{Binding IdArea}" Header="Id Area" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Planes}" x:Name="planeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource planeViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="idPlaneColumn" Binding="{Binding IdPlane}" Header="Id Plane" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="planeNameColumn" Binding="{Binding PlaneName}" Header="Plane Name" Width="SizeToHeader"/>
@@ -87,7 +216,7 @@
                             <DataGridTextColumn x:Name="planeTypeColumn" Binding="{Binding PlaneType}" Header="Plane Type" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="rocketDataGrid" DataContext="{StaticResource rocketViewSource}" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Rockets}" x:Name="rocketDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource rocketViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="idRocketColumn" Binding="{Binding IdRocket}" Header="Id Rocket" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="rocketNameColumn" Binding="{Binding RocketName}" Header="Rocket Name" Width="SizeToHeader"/>
@@ -95,7 +224,7 @@
                             <DataGridTextColumn x:Name="rocketTypeColumn" Binding="{Binding RocketType}" Header="Rocket Type" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="productDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource productViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Products}" x:Name="productDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource productViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="categoryColumn" Binding="{Binding Category}" Header="Category" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="cehIdColumn" Binding="{Binding CehId}" Header="Ceh Id" Width="SizeToHeader"/>
@@ -131,24 +260,24 @@
                             <DataGridTextColumn x:Name="testEquipmentIdColumn" Binding="{Binding TestEquipmentId}" Header="Test Equipment Id" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="brigadeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource brigadeViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Brigades}" x:Name="brigadeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource brigadeViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="areaIdColumn" Binding="{Binding AreaId}" Header="Area Id" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="idBrigadeColumn" Binding="{Binding IdBrigade}" Header="Id Brigade" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="cehDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource cehViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Cehs}" x:Name="cehDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource cehViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="idCehColumn" Binding="{Binding IdCeh}" Header="Id Ceh" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="engTehProfDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource engTehProfViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, EngTehProfs}" x:Name="engTehProfDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource engTehProfViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="engTehProfNameColumn" Binding="{Binding EngTehProfName}" Header="Eng Teh Prof Name" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="idEngTehProfColumn" Binding="{Binding IdEngTehProf}" Header="Id Eng Teh Prof" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="engTehWorkerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource engTehWorkerViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, EngTehWorkers}" x:Name="engTehWorkerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource engTehWorkerViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="areaIdColumn1" Binding="{Binding AreaId}" Header="Area Id" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="engTehWorkerNameColumn" Binding="{Binding EngTehWorkerName}" Header="Eng Teh Worker Name" Width="SizeToHeader"/>
@@ -158,7 +287,7 @@
                             <DataGridTextColumn x:Name="underHeadIdColumn" Binding="{Binding UnderHeadId}" Header="Under Head Id" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="engTehWorkerProfDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource engTehWorkerProfViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, EngTehWorkerProfs}" x:Name="engTehWorkerProfDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource engTehWorkerProfViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="engTehProfIdColumn" Binding="{Binding EngTehProfId}" Header="Eng Teh Prof Id" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="engTehWorkerIdColumn" Binding="{Binding EngTehWorkerId}" Header="Eng Teh Worker Id" Width="SizeToHeader"/>
@@ -178,33 +307,33 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="profDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource profViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Profs}" x:Name="profDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource profViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="idProfColumn" Binding="{Binding IdProf}" Header="Id Prof" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="profNameColumn" Binding="{Binding ProfName}" Header="Prof Name" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="testEquipmentDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource testEquipmentViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, TestEquipments}" x:Name="testEquipmentDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource testEquipmentViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="idTestEquipmentColumn" Binding="{Binding IdTestEquipment}" Header="Id Test Equipment" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="testEquipmentNameColumn" Binding="{Binding TestEquipmentName}" Header="Test Equipment Name" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="testLabIdColumn" Binding="{Binding TestLabId}" Header="Test Lab Id" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="testerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource testerViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Testers}" x:Name="testerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource testerViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="idTesterColumn" Binding="{Binding IdTester}" Header="Id Tester" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="testerNameColumn" Binding="{Binding TesterName}" Header="Tester Name" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="testLabIdColumn1" Binding="{Binding TestLabId}" Header="Test Lab Id" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="testLabDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource testLabViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, TestLabs}" x:Name="testLabDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource testLabViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="idTestLabColumn" Binding="{Binding IdTestLab}" Header="Id Test Lab" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="testLabNameColumn" Binding="{Binding TestLabName}" Header="Test Lab Name" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="workDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource workViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Works}" x:Name="workDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource workViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn x:Name="endDateColumn" Header="End Date" Width="SizeToHeader">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -225,7 +354,7 @@
                             <DataGridTextColumn x:Name="workNameColumn" Binding="{Binding WorkName}" Header="Work Name" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="workerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource workerViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Workers}" x:Name="workerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource workerViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="brigadeIdColumn" Binding="{Binding BrigadeId}" Header="Brigade Id" Width="SizeToHeader"/>
                             <DataGridTextColumn x:Name="idWorkerColumn" Binding="{Binding IdWorker}" Header="Id Worker" Width="SizeToHeader"/>
@@ -233,7 +362,7 @@
                             <DataGridTextColumn x:Name="workerNameColumn" Binding="{Binding WorkerName}" Header="Worker Name" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="workerProfDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource workerProfViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, WorkerProfs}" x:Name="workerProfDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource workerProfViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="profIdColumn" Binding="{Binding ProfId}" Header="Prof Id" Width="SizeToHeader"/>
                             <DataGridTemplateColumn x:Name="quitDateColumn1" Header="Quit Date" Width="SizeToHeader">

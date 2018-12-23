@@ -18,9 +18,22 @@ namespace AviaBuild
 
     public enum TableNames
     {
+        Areas,
         Planes,
         Rockets,
-        Products
+        Products,
+        Brigades,
+        Cehs,
+        EngTehProfs,
+        EngTehWorkers,
+        EngTehWorkerProfs,
+        Profs,
+        TestEquipments,
+        Testers,
+        TestLabs,
+        Works,
+        Workers,
+        WorkerProfs
     }
 
     public class DataHandler : INotifyPropertyChanged
@@ -39,7 +52,7 @@ namespace AviaBuild
 
         public static DataHandler Instance { get; } = new DataHandler();
 
-        public AccountTypes AccType { get => _accType; set { _accType = value; OnPropertyChanged(); } }
+        public AccountTypes CurrAccType { get => _accType; set { _accType = value; OnPropertyChanged(); } }
 
         public TableNames CurrTable { get => _currTable; set { _currTable = value; OnPropertyChanged(); } }
     }
