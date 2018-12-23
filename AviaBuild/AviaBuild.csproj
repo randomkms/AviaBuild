@@ -84,6 +84,7 @@
     <Compile Include="Ceh.cs">
       <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataHandler.cs" />
     <Compile Include="EngTehProf.cs">
       <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
     </Compile>

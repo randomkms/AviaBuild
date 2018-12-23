@@ -43,8 +43,6 @@ namespace AviaBuild
             // to use the DbSet<T> as a binding source.   
             planesViewSource.Source = context.Planes.Local;
             rocketsViewSource.Source = context.Rockets.Local;
-            for (int i = 0; i < 8; i++)
-                (rocketsViewSource.Source as ObservableCollection<Rocket>).Add(new Rocket());
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
