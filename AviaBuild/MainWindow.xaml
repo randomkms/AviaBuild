@@ -17,11 +17,22 @@
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Loaded="Window_Loaded">
     <Window.Resources>
+        <CollectionViewSource x:Key="planeViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Plane}, CreateList=True}"/>
+        <CollectionViewSource x:Key="rocketViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Rocket}, CreateList=True}"/>
         <CollectionViewSource x:Key="productViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Product}, CreateList=True}"/>
-        <CollectionViewSource x:Key="productPlanesViewSource" Source="{Binding Planes, Source={StaticResource productViewSource}}"/>
-        <CollectionViewSource x:Key="productRocketsViewSource" Source="{Binding Rockets, Source={StaticResource productViewSource}}"/>
+        <CollectionViewSource x:Key="brigadeViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Brigade}, CreateList=True}"/>
+        <CollectionViewSource x:Key="cehViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Ceh}, CreateList=True}"/>
+        <CollectionViewSource x:Key="engTehProfViewSource" d:DesignSource="{d:DesignInstance {x:Type local:EngTehProf}, CreateList=True}"/>
+        <CollectionViewSource x:Key="engTehWorkerViewSource" d:DesignSource="{d:DesignInstance {x:Type local:EngTehWorker}, CreateList=True}"/>
+        <CollectionViewSource x:Key="engTehWorkerProfViewSource" d:DesignSource="{d:DesignInstance {x:Type local:EngTehWorkerProf}, CreateList=True}"/>
+        <CollectionViewSource x:Key="profViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Prof}, CreateList=True}"/>
+        <CollectionViewSource x:Key="testEquipmentViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TestEquipment}, CreateList=True}"/>
+        <CollectionViewSource x:Key="testerViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Tester}, CreateList=True}"/>
+        <CollectionViewSource x:Key="testLabViewSource" d:DesignSource="{d:DesignInstance {x:Type local:TestLab}, CreateList=True}"/>
+        <CollectionViewSource x:Key="workViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Work}, CreateList=True}"/>
+        <CollectionViewSource x:Key="workerViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Worker}, CreateList=True}"/>
+        <CollectionViewSource x:Key="workerProfViewSource" d:DesignSource="{d:DesignInstance {x:Type local:WorkerProf}, CreateList=True}"/>
     </Window.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -67,14 +78,182 @@
             </Grid.RowDefinitions>
 
             <GroupBox Header="Current table" Margin="5">
-                <DataGrid DataContext="{StaticResource productRocketsViewSource}" x:Name="rocketsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" HorizontalAlignment="Center" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="idRocketColumn" Binding="{Binding IdRocket}" Header="Id Rocket" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="rocketNameColumn" Binding="{Binding RocketName}" Header="Rocket Name" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="rocketProductIDColumn" Binding="{Binding RocketProductID}" Header="Rocket Product ID" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="rocketTypeColumn" Binding="{Binding RocketType}" Header="Rocket Type" Width="SizeToHeader"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Grid>
+                    <DataGrid DataContext="{StaticResource planeViewSource}" x:Name="planeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idPlaneColumn" Binding="{Binding IdPlane}" Header="Id Plane" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="planeNameColumn" Binding="{Binding PlaneName}" Header="Plane Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="planeProductIDColumn" Binding="{Binding PlaneProductID}" Header="Plane Product ID" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="planeTypeColumn" Binding="{Binding PlaneType}" Header="Plane Type" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="rocketDataGrid" DataContext="{StaticResource rocketViewSource}" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idRocketColumn" Binding="{Binding IdRocket}" Header="Id Rocket" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="rocketNameColumn" Binding="{Binding RocketName}" Header="Rocket Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="rocketProductIDColumn" Binding="{Binding RocketProductID}" Header="Rocket Product ID" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="rocketTypeColumn" Binding="{Binding RocketType}" Header="Rocket Type" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="productDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource productViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="categoryColumn" Binding="{Binding Category}" Header="Category" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="cehIdColumn" Binding="{Binding CehId}" Header="Ceh Id" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="endBuildColumn" Header="End Build" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding EndBuild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="endTestColumn" Header="End Test" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding EndTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="idProductColumn" Binding="{Binding IdProduct}" Header="Id Product" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="startBuildColumn" Header="Start Build" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartBuild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="startTestColumn" Header="Start Test" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="testEquipmentIdColumn" Binding="{Binding TestEquipmentId}" Header="Test Equipment Id" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="brigadeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource brigadeViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="areaIdColumn" Binding="{Binding AreaId}" Header="Area Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="idBrigadeColumn" Binding="{Binding IdBrigade}" Header="Id Brigade" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="cehDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource cehViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idCehColumn" Binding="{Binding IdCeh}" Header="Id Ceh" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="engTehProfDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource engTehProfViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="engTehProfNameColumn" Binding="{Binding EngTehProfName}" Header="Eng Teh Prof Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="idEngTehProfColumn" Binding="{Binding IdEngTehProf}" Header="Id Eng Teh Prof" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="engTehWorkerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource engTehWorkerViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="areaIdColumn1" Binding="{Binding AreaId}" Header="Area Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="engTehWorkerNameColumn" Binding="{Binding EngTehWorkerName}" Header="Eng Teh Worker Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="idEngTehWorkerColumn" Binding="{Binding IdEngTehWorker}" Header="Id Eng Teh Worker" Width="SizeToHeader"/>
+                            <DataGridCheckBoxColumn x:Name="isHeadColumn" Binding="{Binding IsHead}" Header="Is Head" Width="SizeToHeader"/>
+                            <DataGridCheckBoxColumn x:Name="isMasterColumn" Binding="{Binding IsMaster}" Header="Is Master" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="underHeadIdColumn" Binding="{Binding UnderHeadId}" Header="Under Head Id" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="engTehWorkerProfDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource engTehWorkerProfViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="engTehProfIdColumn" Binding="{Binding EngTehProfId}" Header="Eng Teh Prof Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="engTehWorkerIdColumn" Binding="{Binding EngTehWorkerId}" Header="Eng Teh Worker Id" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="quitDateColumn" Header="Quit Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding QuitDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="startWorkDateColumn" Header="Start Work Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartWorkDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="profDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource profViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idProfColumn" Binding="{Binding IdProf}" Header="Id Prof" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="profNameColumn" Binding="{Binding ProfName}" Header="Prof Name" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="testEquipmentDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource testEquipmentViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idTestEquipmentColumn" Binding="{Binding IdTestEquipment}" Header="Id Test Equipment" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="testEquipmentNameColumn" Binding="{Binding TestEquipmentName}" Header="Test Equipment Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="testLabIdColumn" Binding="{Binding TestLabId}" Header="Test Lab Id" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="testerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource testerViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idTesterColumn" Binding="{Binding IdTester}" Header="Id Tester" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="testerNameColumn" Binding="{Binding TesterName}" Header="Tester Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="testLabIdColumn1" Binding="{Binding TestLabId}" Header="Test Lab Id" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="testLabDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource testLabViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="idTestLabColumn" Binding="{Binding IdTestLab}" Header="Id Test Lab" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="testLabNameColumn" Binding="{Binding TestLabName}" Header="Test Lab Name" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="workDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource workViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn x:Name="endDateColumn" Header="End Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding EndDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="idWorkColumn" Binding="{Binding IdWork}" Header="Id Work" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="productIDColumn" Binding="{Binding ProductID}" Header="Product ID" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="startDateColumn" Header="Start Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="workNameColumn" Binding="{Binding WorkName}" Header="Work Name" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="workerDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource workerViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="brigadeIdColumn" Binding="{Binding BrigadeId}" Header="Brigade Id" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="idWorkerColumn" Binding="{Binding IdWorker}" Header="Id Worker" Width="SizeToHeader"/>
+                            <DataGridCheckBoxColumn x:Name="isBrigadierColumn" Binding="{Binding IsBrigadier}" Header="Is Brigadier" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="workerNameColumn" Binding="{Binding WorkerName}" Header="Worker Name" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="workerProfDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource workerProfViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="profIdColumn" Binding="{Binding ProfId}" Header="Prof Id" Width="SizeToHeader"/>
+                            <DataGridTemplateColumn x:Name="quitDateColumn1" Header="Quit Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding QuitDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="startWorkDateColumn1" Header="Start Work Date" Width="SizeToHeader">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding StartWorkDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="workerIdColumn" Binding="{Binding WorkerId}" Header="Worker Id" Width="SizeToHeader"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </GroupBox>
 
             <Grid Grid.Row="2">
@@ -83,7 +262,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button Content="Refresh" Margin="5"/>
+                <Button Content="Refresh" Margin="5" Click="BtnRefresh_Click"/>
                 <Button Grid.Column="1" Content="Save" Click="BtnSave_Click" Margin="5"/>
             </Grid>
         </Grid>

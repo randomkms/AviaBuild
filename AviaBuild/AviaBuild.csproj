@@ -222,8 +222,23 @@
       <DependentUpon>AviaBuildDBModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Area.datasource" />
+    <None Include="Properties\DataSources\Brigade.datasource" />
+    <None Include="Properties\DataSources\Ceh.datasource" />
+    <None Include="Properties\DataSources\EngTehProf.datasource" />
+    <None Include="Properties\DataSources\EngTehWorker.datasource" />
+    <None Include="Properties\DataSources\EngTehWorkerProf.datasource" />
+    <None Include="Properties\DataSources\Plane.datasource" />
     <None Include="Properties\DataSources\pr1_Result.datasource" />
     <None Include="Properties\DataSources\Product.datasource" />
+    <None Include="Properties\DataSources\Prof.datasource" />
+    <None Include="Properties\DataSources\Rocket.datasource" />
+    <None Include="Properties\DataSources\TestEquipment.datasource" />
+    <None Include="Properties\DataSources\Tester.datasource" />
+    <None Include="Properties\DataSources\TestLab.datasource" />
+    <None Include="Properties\DataSources\Work.datasource" />
+    <None Include="Properties\DataSources\Worker.datasource" />
+    <None Include="Properties\DataSources\WorkerProf.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
