@@ -77,7 +77,7 @@ namespace AviaBuild
             var context = Connect(login, tbxPass.Password);
             if (context == null)
             {
-                MessageBox.Show("Введён не верный логин или пароль!");
+                MessageBox.Show("Invalid login or password!");
                 return;
             }
 

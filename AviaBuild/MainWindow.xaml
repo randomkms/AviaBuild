@@ -207,7 +207,7 @@
             </Grid.RowDefinitions>
 
             <GroupBox Header="Current table" Margin="5">
-                <Grid MinWidth="400">
+                <Grid MinWidth="400" Visibility="{helpers:VisibilityBinding CurrAccType, User, True}">
                     <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Areas}" x:Name="areaDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource areaViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="cehIdColumn1" Binding="{Binding CehId}" Header="Ceh Id" Width="SizeToHeader"/>
