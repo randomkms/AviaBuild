@@ -7,7 +7,7 @@
         xmlns:helpers="clr-namespace:AviaBuild.Helpers"
         xmlns:local="clr-namespace:AviaBuild"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Tables"
         WindowStartupLocation="CenterScreen"
         Height="800"
         SizeToContent="Width"
@@ -16,7 +16,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
-        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Loaded="Window_Loaded">
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="planeViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Plane}, CreateList=True}"/>
         <CollectionViewSource x:Key="rocketViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Rocket}, CreateList=True}"/>
@@ -61,7 +62,7 @@
                     </MenuItem.Header>
                     <MenuItem Header="Log out" Click="MenuItemLogOut_Click" />
                 </MenuItem>
-                <MenuItem Header="Go to procedures"/>
+                <MenuItem Header="Go to procedures" Click="MenuItemGoToProcedures_Click"/>
             </Menu>
         </materialDesign:ColorZone>
 
@@ -207,7 +208,7 @@
             </Grid.RowDefinitions>
 
             <GroupBox Header="Current table" Margin="5">
-                <Grid MinWidth="400" Visibility="{helpers:VisibilityBinding CurrAccType, User, True}">
+                <Grid MinWidth="500" Visibility="{helpers:VisibilityBinding CurrAccType, User, True}">
                     <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Areas}" x:Name="areaDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource areaViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="cehIdColumn1" Binding="{Binding CehId}" Header="Ceh Id" Width="SizeToHeader"/>
@@ -395,10 +396,12 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button Content="Refresh" Margin="5" Click="BtnRefresh_Click"/>
-                <Button Grid.Column="1" Content="Save" Click="BtnSave_Click" Margin="5"/>
+                <Button Content="RollBack" Margin="5" Click="BtnRollBack_Click"/>
+                <Button Grid.Column="1" Content="Refresh" Margin="5" Click="BtnRefresh_Click"/>
+                <Button Grid.Column="2" Content="Save" Click="BtnSave_Click" Margin="5"/>
             </Grid>
         </Grid>
     </Grid>

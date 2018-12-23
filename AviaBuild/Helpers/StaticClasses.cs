@@ -86,5 +86,26 @@ namespace AviaBuild.Helpers
 
             return false;
         }
+
+        public static string ToNullableStr(this string s)
+        {
+            if (string.IsNullOrWhiteSpace(s)) return null;
+            return s;
+        }
+
+        public static Nullable<T> ToNullable<T>(this string s) where T : struct
+        {
+            Nullable<T> result = new Nullable<T>();
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(s))
+                {
+                    TypeConverter conv = TypeDescriptor.GetConverter(typeof(T));
+                    result = (T)conv.ConvertFrom(s.Trim());
+                }
+            }
+            catch { }
+            return result;
+        }
     }
 }

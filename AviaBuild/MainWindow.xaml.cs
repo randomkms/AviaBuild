@@ -48,22 +48,7 @@ namespace AviaBuild
             var workerViewSource = (CollectionViewSource)this.FindResource("workerViewSource");
             var workerProfViewSource = (CollectionViewSource)this.FindResource("workerProfViewSource");
 
-            HelpersMethods.TryFunc(context.Areas.Load);
-            HelpersMethods.TryFunc(context.Planes.Load);
-            HelpersMethods.TryFunc(context.Rockets.Load);
-            HelpersMethods.TryFunc(context.Products.Load);
-            HelpersMethods.TryFunc(context.Brigades.Load);
-            HelpersMethods.TryFunc(context.Cehs.Load);
-            HelpersMethods.TryFunc(context.EngTehProfs.Load);
-            HelpersMethods.TryFunc(context.EngTehWorkers.Load);
-            HelpersMethods.TryFunc(context.EngTehWorkerProfs.Load);
-            HelpersMethods.TryFunc(context.Profs.Load);
-            HelpersMethods.TryFunc(context.TestEquipments.Load);
-            HelpersMethods.TryFunc(context.Testers.Load);
-            HelpersMethods.TryFunc(context.TestLabs.Load);
-            HelpersMethods.TryFunc(context.Works.Load);
-            HelpersMethods.TryFunc(context.Workers.Load);
-            HelpersMethods.TryFunc(context.WorkerProfs.Load);
+            LoadAll();
 
             areaViewSource.Source = context.Areas.Local;
             planesViewSource.Source = context.Planes.Local;
@@ -85,15 +70,71 @@ namespace AviaBuild
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            RollBack();
+            try
+            {
+                RefreshAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            LoadAll();
         }
 
-        public void RollBack()
+        private void BtnRollBack_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RollBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void LoadAll()
+        {
+            HelpersMethods.TryFunc(context.Areas.Load);
+            HelpersMethods.TryFunc(context.Planes.Load);
+            HelpersMethods.TryFunc(context.Rockets.Load);
+            HelpersMethods.TryFunc(context.Products.Load);
+            HelpersMethods.TryFunc(context.Brigades.Load);
+            HelpersMethods.TryFunc(context.Cehs.Load);
+            HelpersMethods.TryFunc(context.EngTehProfs.Load);
+            HelpersMethods.TryFunc(context.EngTehWorkers.Load);
+            HelpersMethods.TryFunc(context.EngTehWorkerProfs.Load);
+            HelpersMethods.TryFunc(context.Profs.Load);
+            HelpersMethods.TryFunc(context.TestEquipments.Load);
+            HelpersMethods.TryFunc(context.Testers.Load);
+            HelpersMethods.TryFunc(context.TestLabs.Load);
+            HelpersMethods.TryFunc(context.Works.Load);
+            HelpersMethods.TryFunc(context.Workers.Load);
+            HelpersMethods.TryFunc(context.WorkerProfs.Load);
+        }
+
+        private void RefreshAll()
+        {
+            foreach (var entity in context.ChangeTracker.Entries())
+            {
+                entity.Reload();
+            }
+        }
+
+        private void RollBack()
         {
             var changedEntries = context.ChangeTracker.Entries()
                 .Where(x => x.State != EntityState.Unchanged).ToList();
@@ -128,6 +169,12 @@ namespace AviaBuild
             context.Dispose();
             new LoginWindow().Show();
             Close();
+        }
+
+        private void MenuItemGoToProcedures_Click(object sender, RoutedEventArgs e)
+        {
+            WindowProcedures.Instance?.Close();
+            new WindowProcedures(context).Show();
         }
     }
 
