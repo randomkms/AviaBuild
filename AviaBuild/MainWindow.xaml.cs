@@ -48,22 +48,22 @@ namespace AviaBuild
             var workerViewSource = (CollectionViewSource)this.FindResource("workerViewSource");
             var workerProfViewSource = (CollectionViewSource)this.FindResource("workerProfViewSource");
 
-            context.Areas.Load();
-            context.Planes.Load();
-            context.Rockets.Load();
-            context.Products.Load();
-            context.Brigades.Load();
-            context.Cehs.Load();
-            context.EngTehProfs.Load();
-            context.EngTehWorkers.Load();
-            context.EngTehWorkerProfs.Load();
-            context.Profs.Load();
-            context.TestEquipments.Load();
-            context.Testers.Load();
-            context.TestLabs.Load();
-            context.Works.Load();
-            context.Workers.Load();
-            context.WorkerProfs.Load();
+            HelpersMethods.TryFunc(context.Areas.Load);
+            HelpersMethods.TryFunc(context.Planes.Load);
+            HelpersMethods.TryFunc(context.Rockets.Load);
+            HelpersMethods.TryFunc(context.Products.Load);
+            HelpersMethods.TryFunc(context.Brigades.Load);
+            HelpersMethods.TryFunc(context.Cehs.Load);
+            HelpersMethods.TryFunc(context.EngTehProfs.Load);
+            HelpersMethods.TryFunc(context.EngTehWorkers.Load);
+            HelpersMethods.TryFunc(context.EngTehWorkerProfs.Load);
+            HelpersMethods.TryFunc(context.Profs.Load);
+            HelpersMethods.TryFunc(context.TestEquipments.Load);
+            HelpersMethods.TryFunc(context.Testers.Load);
+            HelpersMethods.TryFunc(context.TestLabs.Load);
+            HelpersMethods.TryFunc(context.Works.Load);
+            HelpersMethods.TryFunc(context.Workers.Load);
+            HelpersMethods.TryFunc(context.WorkerProfs.Load);
 
             areaViewSource.Source = context.Areas.Local;
             planesViewSource.Source = context.Planes.Local;
@@ -121,6 +121,13 @@ namespace AviaBuild
             var name = (sender as FrameworkElement).Name.Substring(3);
             if (Enum.TryParse(name, out TableNames tableName))
                 DataHandler.Instance.CurrTable = tableName;
+        }
+
+        private void MenuItemLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            context.Dispose();
+            new LoginWindow().Show();
+            Close();
         }
     }
 

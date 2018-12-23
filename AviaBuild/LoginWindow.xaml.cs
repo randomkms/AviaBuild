@@ -61,15 +61,27 @@ namespace AviaBuild
             Close();
         }
 
+        private AccountTypes GetAccType(string login)
+        {
+            foreach (var accType in Enum.GetValues(typeof(AccountTypes)).Cast<AccountTypes>())
+            {
+                if (login.Contains(accType.ToString())) return accType;
+            }
+
+            return AccountTypes.User;
+        }
+
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            var context = Connect(tbxLogin.Text, tbxPass.Password);
+            string login = tbxLogin.Text;
+            var context = Connect(login, tbxPass.Password);
             if (context == null)
             {
                 MessageBox.Show("Введён не верный логин или пароль!");
                 return;
             }
 
+            DataHandler.Instance.CurrAccType = GetAccType(login);
             new MainWindow(context).Show();
             Close();
         }

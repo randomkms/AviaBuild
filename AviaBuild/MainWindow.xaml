@@ -52,8 +52,14 @@
             x:Name="ColorZoneTop">
             <Menu Background="{Binding Background, ElementName=ColorZoneTop}" Grid.ColumnSpan="2"
                   Foreground="{Binding Foreground, ElementName=ColorZoneTop}">
-                <MenuItem Header="Current account: Admin">
-                    <MenuItem Header="Log out" />
+                <MenuItem>
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Current account: " />
+                            <TextBlock Text="{Binding CurrAccType}" />
+                        </StackPanel>
+                    </MenuItem.Header>
+                    <MenuItem Header="Log out" Click="MenuItemLogOut_Click" />
                 </MenuItem>
                 <MenuItem Header="Go to procedures"/>
             </Menu>

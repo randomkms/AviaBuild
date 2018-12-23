@@ -71,5 +71,20 @@ namespace AviaBuild.Helpers
                 }
             }
         }
+
+        public static bool TryFunc(Action method)
+        {
+            try
+            {
+                method();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return false;
+        }
     }
 }
