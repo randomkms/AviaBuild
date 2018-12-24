@@ -104,6 +104,12 @@
     <Compile Include="Plane.cs">
       <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pr2_Result.cs">
+      <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pr8_Result.cs">
+      <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
     </Compile>
@@ -194,9 +200,6 @@
     <Compile Include="pr1_Result.cs">
       <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="pr2_Result.cs">
-      <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="pr3_Result.cs">
       <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
     </Compile>
@@ -210,9 +213,6 @@
       <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pr7_Result.cs">
-      <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="pr8_Result.cs">
       <DependentUpon>AviaBuildDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pr9_Result.cs">
@@ -250,7 +250,19 @@
     <None Include="Properties\DataSources\EngTehWorker.datasource" />
     <None Include="Properties\DataSources\EngTehWorkerProf.datasource" />
     <None Include="Properties\DataSources\Plane.datasource" />
+    <None Include="Properties\DataSources\pr10_Result.datasource" />
+    <None Include="Properties\DataSources\pr11_Result.datasource" />
+    <None Include="Properties\DataSources\pr12_Result.datasource" />
+    <None Include="Properties\DataSources\pr13_Result.datasource" />
     <None Include="Properties\DataSources\pr1_Result.datasource" />
+    <None Include="Properties\DataSources\pr2_Result.datasource" />
+    <None Include="Properties\DataSources\pr3_Result.datasource" />
+    <None Include="Properties\DataSources\pr4_Result.datasource" />
+    <None Include="Properties\DataSources\pr5_Result.datasource" />
+    <None Include="Properties\DataSources\pr6_Result.datasource" />
+    <None Include="Properties\DataSources\pr7_Result.datasource" />
+    <None Include="Properties\DataSources\pr8_Result.datasource" />
+    <None Include="Properties\DataSources\pr9_Result.datasource" />
     <None Include="Properties\DataSources\Product.datasource" />
     <None Include="Properties\DataSources\Prof.datasource" />
     <None Include="Properties\DataSources\Rocket.datasource" />

@@ -8,7 +8,9 @@
         xmlns:local="clr-namespace:AviaBuild"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="WindowProcedures" Height="450" Width="800"
+        Title="Procedures"
+        ResizeMode="CanMinimize"
+        SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -41,81 +43,1038 @@
     </Window.Resources>
     
     <Grid>
-        <ScrollViewer Background="LightGray">
-            <materialDesign:Flipper
-  Style="{StaticResource MaterialDesignCardFlipper}">
-                <materialDesign:Flipper.FrontContent>
-                    <materialDesign:ColorZone>
-                    <Grid Height="256" Width="200">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="100" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
-                            <Grid Grid.Row="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <materialDesign:ColorZone
+            Mode="PrimaryDark"
+            CornerRadius="3"
+            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+            Margin="2"
+            x:Name="ColorZoneTop" Height="60" >
+            <Grid>
+                <TextBlock Text="Choose procedure" TextAlignment="Center" VerticalAlignment="Center"
+                           Style="{StaticResource MaterialDesignHeadlineTextBlock}" />
+            </Grid>
+        </materialDesign:ColorZone>
+        <ScrollViewer Background="LightGray" VerticalScrollBarVisibility="Auto" Margin="5" Grid.Row="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
                                 Text="{StaticResource Pr1Descr}" />
-                            <Button Grid.Row="1"
+                                        <Button Grid.Row="1"
                                 VerticalAlignment="Bottom"
                                 Command="{x:Static materialDesign:Flipper.FlipCommand}"
                                 Margin="5 0 5 10" Content="Select"/>
-                        </Grid>
-                    </Grid>
-                    </materialDesign:ColorZone>
-                </materialDesign:Flipper.FrontContent>
-                <materialDesign:Flipper.BackContent>
-                    <materialDesign:ColorZone>
-                        <Grid Height="256" Width="200">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <materialDesign:ColorZone Mode="Accent" Padding="6">
-                                <StackPanel Orientation="Horizontal">
-                                    <Button
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
                                     Style="{StaticResource MaterialDesignToolForegroundButton}"
                                     Command="{x:Static materialDesign:Flipper.FlipCommand}"
                                     HorizontalAlignment="Left">
-                                        <materialDesign:PackIcon
+                                                <materialDesign:PackIcon
                                         Kind="ArrowLeft"
                                         HorizontalAlignment="Right" />
-                                    </Button>
-                                    <TextBlock
+                                            </Button>
+                                            <TextBlock
                                     Margin="8 0 0 0"
                                     VerticalAlignment="Center"
                                     Text="Set parameters and run!" />
-                                </StackPanel>
-                            </materialDesign:ColorZone>
-                            <Grid Grid.Row="1" Margin="0 6 0 0" Width="172">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <TextBox
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Margin="0 6 0 0" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
                                     x:Name="TbxCategoryPr1"
                                     materialDesign:HintAssist.Hint="Category"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                    materialDesign:HintAssist.HintOpacity="0.8" />
-                                <TextBox
+                                     />
+                                        <TextBox
                                     x:Name="TbxCehIdPr1"
                                     Grid.Row="1"
                                     materialDesign:HintAssist.Hint="Ceh Id"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                    materialDesign:HintAssist.HintOpacity="0.8" />
-                                <Button Grid.RowSpan="10" VerticalAlignment="Bottom" 
+                                     />
+                                        <Button Grid.RowSpan="10" VerticalAlignment="Bottom" 
                                         Margin="5 0 5 10" Content="Run" Click="BtnPr1Run_Click"/>
-                            </Grid>
-                        </Grid>
-                    </materialDesign:ColorZone>
-                </materialDesign:Flipper.BackContent>
-            </materialDesign:Flipper>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr2Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="300" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition Height="1.2*" />
+                                        </Grid.RowDefinitions>
+                                        <DatePicker
+                                    x:Name="DatePickerStartDatePr2"
+                                    materialDesign:HintAssist.Hint="Start Date"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                        <DatePicker
+                                    x:Name="DatePickerEndDatePr2"
+                                        Grid.Row="1"
+                                    materialDesign:HintAssist.Hint="End Date"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                        <TextBox
+                                    x:Name="TbxCategoryPr2"
+                                        Grid.Row="2"
+                                    materialDesign:HintAssist.Hint="Category"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxCehIdPr2"
+                                    Grid.Row="3"
+                                    materialDesign:HintAssist.Hint="Ceh Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxAreaIdPr2"
+                                    Grid.Row="4"
+                                    materialDesign:HintAssist.Hint="Area Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <Button Grid.Row="5" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr2Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr3Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Margin="0 6 0 0" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxCehIdPr3"
+                                    Grid.Row="0"
+                                    materialDesign:HintAssist.Hint="Ceh Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxEngProfPr3"
+                                    Grid.Row="1"
+                                    materialDesign:HintAssist.Hint="Eng Prof"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxWorkerProfPr3"
+                                    Grid.Row="2"
+                                    materialDesign:HintAssist.Hint="Worker Prof"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <Button Grid.RowSpan="10" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr3Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr4Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Margin="0 6 0 0" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxCehIdPr4"
+                                    materialDesign:HintAssist.Hint="Ceh Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <Button Grid.RowSpan="10" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr4Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr5Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Margin="0 6 0 0" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxProductIdPr5"
+                                    materialDesign:HintAssist.Hint="Product Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <Button Grid.RowSpan="10" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr5Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr6Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Margin="0 6 0 0" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxCehIdPr6"
+                                    Grid.Row="0"
+                                    materialDesign:HintAssist.Hint="Ceh Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxAreaIdPr6"
+                                    Grid.Row="1"
+                                    materialDesign:HintAssist.Hint="Area Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <Button Grid.RowSpan="10" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr6Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr7Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Margin="0 6 0 0" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxCehIdPr7"
+                                    Grid.Row="0"
+                                    materialDesign:HintAssist.Hint="Ceh Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxAreaIdPr7"
+                                    Grid.Row="1"
+                                    materialDesign:HintAssist.Hint="Area Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <Button Grid.RowSpan="10" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr7Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr8Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Margin="0 6 0 0" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxCategoryPr8"
+                                    materialDesign:HintAssist.Hint="Category"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxCehIdPr8"
+                                    Grid.Row="1"
+                                    materialDesign:HintAssist.Hint="Ceh Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxAreaIdPr8"
+                                    Grid.Row="2"
+                                    materialDesign:HintAssist.Hint="Area Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <Button Grid.RowSpan="10" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr8Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr9Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Margin="0 6 0 0" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxProductIdPr9"
+                                    materialDesign:HintAssist.Hint="Product Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <Button Grid.RowSpan="10" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr9Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr10Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Margin="0 6 0 0" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxProductIdPr10"
+                                    materialDesign:HintAssist.Hint="Product Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <Button Grid.RowSpan="10" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr10Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr11Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition Height="1.2*" />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxCategoryPr11"
+                                    materialDesign:HintAssist.Hint="Category"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxTestLabIdPr11"
+                                    Grid.Row="1"
+                                    materialDesign:HintAssist.Hint="Ceh Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <DatePicker
+                                    x:Name="DatePickerStartDatePr11"
+                                        Grid.Row="2"
+                                    materialDesign:HintAssist.Hint="Start Date"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                     />
+                                        <DatePicker
+                                    x:Name="DatePickerEndDatePr11"
+                                        Grid.Row="3"
+                                    materialDesign:HintAssist.Hint="End Date"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                     />
+                                        <Button Grid.Row="4" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr11Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr12Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="300" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition Height="1.2*" />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxProductIdPr12"
+                                    materialDesign:HintAssist.Hint="Product Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxCategoryPr12"
+                                        Grid.Row="1"
+                                    materialDesign:HintAssist.Hint="Category"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxTestLabIdPr12"
+                                    Grid.Row="2"
+                                    materialDesign:HintAssist.Hint="Ceh Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <DatePicker
+                                    x:Name="DatePickerStartDatePr12"
+                                        Grid.Row="3"
+                                    materialDesign:HintAssist.Hint="Start Date"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                     />
+                                        <DatePicker
+                                    x:Name="DatePickerEndDatePr12"
+                                        Grid.Row="4"
+                                    materialDesign:HintAssist.Hint="End Date"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                     />
+                                        <Button Grid.Row="5" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr12Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                    <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}">
+                        <materialDesign:Flipper.FrontContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="256" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Grid Grid.Row="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Text="{StaticResource Pr13Descr}" />
+                                        <Button Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                Margin="5 0 5 10" Content="Select"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.FrontContent>
+                        <materialDesign:Flipper.BackContent>
+                            <materialDesign:ColorZone>
+                                <Grid Height="300" Width="200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Mode="Accent" Padding="6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    HorizontalAlignment="Left">
+                                                <materialDesign:PackIcon
+                                        Kind="ArrowLeft"
+                                        HorizontalAlignment="Right" />
+                                            </Button>
+                                            <TextBlock
+                                    Margin="8 0 0 0"
+                                    VerticalAlignment="Center"
+                                    Text="Set parameters and run!" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid Grid.Row="1" Width="172">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition Height="1.2*" />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                    x:Name="TbxProductIdPr13"
+                                    materialDesign:HintAssist.Hint="Product Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxCategoryPr13"
+                                        Grid.Row="1"
+                                    materialDesign:HintAssist.Hint="Category"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <TextBox
+                                    x:Name="TbxTestLabIdPr13"
+                                    Grid.Row="2"
+                                    materialDesign:HintAssist.Hint="Ceh Id"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     />
+                                        <DatePicker
+                                    x:Name="DatePickerStartDatePr13"
+                                        Grid.Row="3"
+                                    materialDesign:HintAssist.Hint="Start Date"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                     />
+                                        <DatePicker
+                                    x:Name="DatePickerEndDatePr13"
+                                        Grid.Row="4"
+                                    materialDesign:HintAssist.Hint="End Date"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                     />
+                                        <Button Grid.Row="5" VerticalAlignment="Bottom" 
+                                        Margin="5 0 5 10" Content="Run" Click="BtnPr13Run_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </materialDesign:Flipper.BackContent>
+                    </materialDesign:Flipper>
+                </StackPanel>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Window>

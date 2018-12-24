@@ -21,8 +21,6 @@ namespace AviaBuild
         public Nullable<System.DateTime> StartTest { get; set; }
         public Nullable<System.DateTime> EndTest { get; set; }
         public string Category { get; set; }
-        public int IdCeh { get; set; }
         public int IdArea { get; set; }
-        public int CehId1 { get; set; }
     }
 }
