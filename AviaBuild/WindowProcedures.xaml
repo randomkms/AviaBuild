@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:helpers="clr-namespace:AviaBuild.Helpers"
         xmlns:local="clr-namespace:AviaBuild"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="WindowProcedures" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
@@ -22,6 +23,20 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <system:String x:Key="Pr1Descr">Get a list of products of a particular category and in general, collected by the specified ceh, enterprise.</system:String>
+            <system:String x:Key="Pr2Descr">To receive the quantity and the list of products of a separate category and in general; collected by the specified ceh, area, enterprise as a whole for a certain period of time.</system:String>
+            <system:String x:Key="Pr3Descr">Obtain data on the personnel of the ceh, the enterprise as a whole and on the specified categories of engineering staff and workers.</system:String>
+            <system:String x:Key="Pr4Descr">Get the number and list of areas of selected ceh, the enterprise as a whole and their heads.</system:String>
+            <system:String x:Key="Pr5Descr">Get a list of works that pass the selected product.</system:String>
+            <system:String x:Key="Pr6Descr">Get the composition of brigades of the specified area, ceh.</system:String>
+            <system:String x:Key="Pr7Descr">Get a list of the masters of this area, ceh.</system:String>
+            <system:String x:Key="Pr8Descr">Obtain a list of products of a specified category and in general, that are building at this time by the specified area, ceh, enterprise.</system:String>
+            <system:String x:Key="Pr9Descr">Get the composition of the brigades involved in the build of the specified product.</system:String>
+            <system:String x:Key="Pr10Descr">Get a list of test laboratories that are involved in testing a particular product.</system:String>
+            <system:String x:Key="Pr11Descr">Obtain a list of products of a particular category and in general that have been tested in the specified lab for a certain period.</system:String>
+            <system:String x:Key="Pr12Descr">Get a list of testers involved in the tests of the specified product, products of a particular category and in general in specified laboratory for a certain period.</system:String>
+            <system:String x:Key="Pr13Descr">Obtain the equipment used for testing the specified product, products of a particular category and in general in specified laboratory for a certain period.</system:String>
         </ResourceDictionary>
     </Window.Resources>
     
@@ -43,7 +58,7 @@
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
                                 <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                Text="Get a list of products of a particular category and in general, collected by the specified ceh, enterprise." />
+                                Text="{StaticResource Pr1Descr}" />
                             <Button Grid.Row="1"
                                 VerticalAlignment="Bottom"
                                 Command="{x:Static materialDesign:Flipper.FlipCommand}"
