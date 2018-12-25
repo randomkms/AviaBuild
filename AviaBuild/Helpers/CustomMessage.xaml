@@ -1,0 +1,91 @@
+﻿<Popup x:Class="AviaBuild.Helpers.CustomMessage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d:DesignHeight="192" d:DesignWidth="1366"
+             MinWidth="600"
+             MinHeight="200"
+             mc:Ignorable="d"
+             Placement="Center"
+             AllowsTransparency="True">
+    <Popup.Resources>
+        <BeginStoryboard x:Key="MessageShowAnimation">
+            <Storyboard Duration="00:00:3">
+                <DoubleAnimation Storyboard.TargetName="MessageIconBorder" Storyboard.TargetProperty="Width" From="0" To="10" Duration="0:0:0.15"  BeginTime="0:0:0"/>
+                <DoubleAnimation Storyboard.TargetName="MessageIconBorder" Storyboard.TargetProperty="Height" From="0" To="10" Duration="0:0:0.15"  BeginTime="0:0:0"/>
+                <DoubleAnimation Storyboard.TargetName="MessageText" Storyboard.TargetProperty="Width" From="0" To="65" Duration="0:0:0.25"  BeginTime="0:0:0.15"/>
+                <DoubleAnimation Storyboard.TargetName="MessageText" Storyboard.TargetProperty="Width" From="65" To="0" Duration="0:0:0.25"  BeginTime="0:0:2.25"/>
+                <DoubleAnimation Storyboard.TargetName="MessageIconBorder" Storyboard.TargetProperty="Width" From="10" To="0" Duration="0:0:0.15"  BeginTime="0:0:2.5"/>
+                <DoubleAnimation Storyboard.TargetName="MessageIconBorder" Storyboard.TargetProperty="Height" From="10" To="0" Duration="0:0:0.15"  BeginTime="0:0:2.5"/>
+            </Storyboard>
+        </BeginStoryboard>
+    </Popup.Resources>
+    <Grid>
+        <Viewbox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+                <Border x:Name="MessageText"  Grid.Column="1"  BorderThickness="1" BorderBrush="#324657" CornerRadius="0,1,1,0" Background="White"  Width="0" Height="10">
+                    <Viewbox>
+                        <TextBlock x:Name="TblText" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,12"
+                    Text="Message" FontFamily="Cambia" Foreground="Black" FontSize="18"/>
+                    </Viewbox>
+                </Border>
+                <Border x:Name="MessageIconBorder" Grid.Column="0" Background="#5F008CFF" Width="10" Height="10" CornerRadius="1,0,0,1" >
+                    <Grid>
+                        <Viewbox x:Name="ErrorIcon">
+                            <Grid Margin="140,135,140,140">
+                                <Path Fill="Black">
+                                    <Path.Data>
+                                        <PathGeometry FillRule="Nonzero" Figures="M333.413,275.866L194.213,36.266C187.813,25.466 178.613,19.066 169.013,19.066 159.013,19.066 149.813,25.466 143.813,36.266L5.41300000000004,275.866C-0.986999999999961,286.666 -1.78699999999996,297.866 3.41300000000004,306.266 8.21300000000004,314.666 18.213,319.466 31.013,319.466L307.813,319.466C320.213,319.466 330.213,314.666 335.413,306.266 340.213,297.866 339.413,286.666 333.413,275.866z M320.213,297.866C318.213,301.066,313.813,302.666,307.413,302.666L30.613,302.666C24.213,302.666 19.413,300.666 17.813,297.866 15.813,294.666 16.613,289.866 19.813,284.266L158.213,44.666C161.413,39.066 165.413,35.866 169.013,35.866 172.613,35.866 176.613,39.066 179.813,44.666L318.213,284.266C321.413,289.866,322.213,294.666,320.213,297.866z" />
+                                    </Path.Data>
+                                </Path>
+                                <Path Fill="Black">
+                                    <Path.Data>
+                                        <PathGeometry FillRule="Nonzero" Figures="M169.013,97.866C164.213,97.866,160.613,101.466,160.613,106.266L160.613,217.466C160.613,222.266 164.213,225.866 169.013,225.866 173.813,225.866 177.413,222.266 177.413,217.466L177.413,106.266C177.413,101.466,173.813,97.866,169.013,97.866z" />
+                                    </Path.Data>
+                                </Path>
+                                <Path Fill="Black">
+                                    <Path.Data>
+                                        <EllipseGeometry RadiusX="14.8" RadiusY="14.8" Center="169.013,259.466" />
+                                    </Path.Data>
+                                </Path>
+                            </Grid>
+                        </Viewbox>
+                        <Viewbox x:Name="InfoIcon">
+                            <Grid Margin="140,135,140,140">
+                                <Path Fill="Black">
+                                    <Path.Data>
+                                        <PathGeometry FillRule="Nonzero" Figures="M333.413,275.866L194.213,36.266C187.813,25.466 178.613,19.066 169.013,19.066 159.013,19.066 149.813,25.466 143.813,36.266L5.41300000000004,275.866C-0.986999999999961,286.666 -1.78699999999996,297.866 3.41300000000004,306.266 8.21300000000004,314.666 18.213,319.466 31.013,319.466L307.813,319.466C320.213,319.466 330.213,314.666 335.413,306.266 340.213,297.866 339.413,286.666 333.413,275.866z M320.213,297.866C318.213,301.066,313.813,302.666,307.413,302.666L30.613,302.666C24.213,302.666 19.413,300.666 17.813,297.866 15.813,294.666 16.613,289.866 19.813,284.266L158.213,44.666C161.413,39.066 165.413,35.866 169.013,35.866 172.613,35.866 176.613,39.066 179.813,44.666L318.213,284.266C321.413,289.866,322.213,294.666,320.213,297.866z" />
+                                    </Path.Data>
+                                </Path>
+                                <Path Fill="Black">
+                                    <Path.Data>
+                                        <PathGeometry FillRule="Nonzero" Figures="M169.013,97.866C164.213,97.866,160.613,101.466,160.613,106.266L160.613,217.466C160.613,222.266 164.213,225.866 169.013,225.866 173.813,225.866 177.413,222.266 177.413,217.466L177.413,106.266C177.413,101.466,173.813,97.866,169.013,97.866z" />
+                                    </Path.Data>
+                                </Path>
+                                <Path Fill="Black">
+                                    <Path.Data>
+                                        <EllipseGeometry RadiusX="14.8" RadiusY="14.8" Center="169.013,259.466" />
+                                    </Path.Data>
+                                </Path>
+                            </Grid>
+                        </Viewbox>
+                        <Viewbox x:Name="DoneIcon">
+                            <Grid Margin="180,180,180,180">
+                                <Path Fill="Black">
+                                    <Path.Data>
+                                        <PathGeometry FillRule="Nonzero" Figures="M385.621,62.507L146.225,301.901 21.213,176.891 0,198.104 146.225,344.327 406.834,83.72z" />
+                                    </Path.Data>
+                                </Path>
+                            </Grid>
+                        </Viewbox>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Popup>

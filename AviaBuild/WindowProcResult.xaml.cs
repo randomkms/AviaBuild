@@ -1,4 +1,5 @@
-﻿using CrystalDecisions.CrystalReports.Engine;
+﻿using AviaBuild.Helpers;
+using CrystalDecisions.CrystalReports.Engine;
 using Microsoft.Win32;
 using System;
 using System.Collections;
@@ -129,7 +130,7 @@ namespace AviaBuild
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                CustomMessage.Show(ex.Message, this);
             }
         }
 

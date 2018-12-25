@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AviaBuild.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.EntityClient;
@@ -77,7 +78,7 @@ namespace AviaBuild
             var context = Connect(login, tbxPass.Password);
             if (context == null)
             {
-                MessageBox.Show("Invalid login or password!");
+                CustomMessage.Show("Invalid login or password!", this);
                 return;
             }
 

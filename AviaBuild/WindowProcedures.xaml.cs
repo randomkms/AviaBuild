@@ -41,7 +41,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -59,7 +59,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -75,7 +75,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -89,7 +89,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -103,7 +103,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -118,7 +118,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -133,7 +133,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -149,7 +149,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -163,7 +163,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -177,7 +177,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -194,7 +194,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -212,7 +212,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
 
@@ -230,7 +230,7 @@ namespace AviaBuild
             }
             catch
             {
-                MessageBox.Show(ErrorMessage);
+                CustomMessage.Show(ErrorMessage, this);
             }
         }
     }

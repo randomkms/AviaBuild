@@ -76,8 +76,10 @@ namespace AviaBuild
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                CustomMessage.Show(ex.Message, this);
             }
+
+            CustomMessage.Show("Successfully saved", this, MessageType.Success);
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
@@ -85,13 +87,15 @@ namespace AviaBuild
             try
             {
                 RefreshAll();
+                LoadAll();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                CustomMessage.Show(ex.Message, this);
             }
 
-            LoadAll();
+            
+            CustomMessage.Show("Successfully refreshed", this, MessageType.Success);
         }
 
         private void BtnRollBack_Click(object sender, RoutedEventArgs e)
@@ -102,8 +106,10 @@ namespace AviaBuild
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                CustomMessage.Show(ex.Message, this);
             }
+
+            CustomMessage.Show("Successfully rollback", this, MessageType.Success);
         }
 
         private void LoadAll()
