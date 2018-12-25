@@ -70,7 +70,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/1.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -143,7 +143,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/2.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -233,7 +233,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/3.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -313,7 +313,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/4.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -380,7 +380,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/5.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -449,7 +449,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/6.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -523,7 +523,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/7.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -597,7 +597,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/8.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -676,7 +676,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/9.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -743,7 +743,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/10.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -812,7 +812,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/11.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -897,7 +897,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/12.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -989,7 +989,7 @@
                                         <RowDefinition Height="100" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Image VerticalAlignment="Center" Source="Resources/PlanesEngine.png"/>
+                                    <Image Margin="0,5,0,0" VerticalAlignment="Center" Source="Resources/13.png"/>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
