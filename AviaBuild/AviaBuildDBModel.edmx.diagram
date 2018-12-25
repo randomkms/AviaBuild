@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8ad3495bc65b4c4d9fba6efdb2b3f22f" Name="Diagram1">
-        <EntityTypeShape EntityType="AviaBuildDBModel.Area" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.Brigade" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.Ceh" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.EngTehProf" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.EngTehWorker" Width="1.5" PointX="7.5" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.EngTehWorkerProf" Width="1.5" PointX="9.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.Plane" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+      <Diagram DiagramId="8ad3495bc65b4c4d9fba6efdb2b3f22f" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="AviaBuildDBModel.Area" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Brigade" Width="1.5" PointX="7.875" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Ceh" Width="1.5" PointX="4.125" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.EngTehProf" Width="1.5" PointX="2.375" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.EngTehWorker" Width="1.5" PointX="6.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.EngTehWorkerProf" Width="1.5" PointX="4.375" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Plane" Width="1.5" PointX="4.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AviaBuildDBModel.Product" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.Prof" Width="1.5" PointX="9.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.Rocket" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.TestEquipment" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.Tester" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.TestLab" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.Work" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.Worker" Width="1.5" PointX="9.75" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AviaBuildDBModel.WorkerProf" Width="1.5" PointX="12" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Prof" Width="1.5" PointX="9.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Rocket" Width="1.5" PointX="7" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.TestEquipment" Width="1.5" PointX="2.625" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Tester" Width="1.5" PointX="2.375" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.TestLab" Width="1.5" PointX="2.625" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Work" Width="1.5" PointX="7.125" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Worker" Width="1.5" PointX="8" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.WorkerProf" Width="1.5" PointX="9.875" PointY="8.5" IsExpanded="true" />
         <AssociationConnector Association="AviaBuildDBModel.FK__Area__CehId__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="AviaBuildDBModel.FK__Brigade__AreaId__59063A47" ManuallyRouted="false" />
         <AssociationConnector Association="AviaBuildDBModel.FK__EngTehWor__AreaI__5070F446" ManuallyRouted="false" />
