@@ -8,6 +8,7 @@
         xmlns:local="clr-namespace:AviaBuild"
         mc:Ignorable="d"
         Title="WindowProcResult"
+        ResizeMode="CanResize"
         WindowStyle="None"
         SizeToContent="WidthAndHeight"
         MinWidth="400"
@@ -43,7 +44,13 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <GroupBox Header="Procedure result">
+        <GroupBox Margin="5,0,5,5">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Procedure result: " Foreground="White" />
+                    <TextBlock x:Name="TbxLinesCount" Foreground="White" />
+                </StackPanel>
+            </GroupBox.Header>
             <Grid>
                 <DataGrid Visibility="{Binding ItemsSource, Converter={helpers:NullToVisibilityConverter}, RelativeSource={RelativeSource Mode=Self}}" x:Name="pr1_ResultDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource pr1_ResultViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                     <DataGrid.Columns>

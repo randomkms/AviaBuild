@@ -66,6 +66,32 @@ namespace AviaBuild
             pr11_ResultViewSource.Source = Pr11_Results;
             pr12_ResultViewSource.Source = Pr12_Results;
             pr13_ResultViewSource.Source = Pr13_Results;
+
+            var AllResults = new List<CollectionViewSource>(13)
+            {
+                pr1_ResultViewSource,
+                pr2_ResultViewSource,
+                pr3_ResultViewSource,
+                pr4_ResultViewSource,
+                pr5_ResultViewSource,
+                pr6_ResultViewSource,
+                pr7_ResultViewSource,
+                pr8_ResultViewSource,
+                pr9_ResultViewSource,
+                pr10_ResultViewSource,
+                pr11_ResultViewSource,
+                pr12_ResultViewSource,
+                pr13_ResultViewSource
+            };
+
+            foreach (var res in AllResults)
+            {
+                if (res.Source != null)
+                {
+                    TbxLinesCount.Text = (res.Source as ICollection).Count + " lines";
+                    return;
+                }
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
