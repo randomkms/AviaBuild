@@ -28,23 +28,23 @@
             <TextBlock Text="Avia Build Company" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
                        Style="{StaticResource MaterialDesignHeadlineTextBlock}"/>
         </materialDesign:ColorZone>
-        <TextBlock Grid.Row="1" Text="Вход в систему" TextAlignment="Center" VerticalAlignment="Center"
+        <TextBlock Grid.Row="1" Text="Authorization" TextAlignment="Center" VerticalAlignment="Center"
                    Style="{StaticResource MaterialDesignHeadlineTextBlock}"/>
         <TextBox x:Name="tbxLogin" Grid.Row="2" VerticalAlignment="Center" Margin="5,0"
-                 materialDesign:HintAssist.Hint="Логин"
+                 materialDesign:HintAssist.Hint="Login"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="SystemAdmin1"
                  />
         <PasswordBox x:Name="tbxPass" Grid.Row="3" VerticalAlignment="Center" Margin="5,0"
                      Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                     materialDesign:HintAssist.Hint="Пароль" Password="551233AdminQweEwq"/>
+                     materialDesign:HintAssist.Hint="Password" Password="551233AdminQweEwq"/>
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="5" Content="Закрыть" Click="BtnClose_Click" />
-            <Button Margin="5" Content="Войти" Grid.Column="1"
+            <Button Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="5" Content="Close" Click="BtnClose_Click" />
+            <Button Margin="5" Content="Sign in" Grid.Column="1"
                     Style="{StaticResource MaterialDesignRaisedAccentButton}" Click="BtnLogin_Click"/>
         </Grid>
     </Grid>
