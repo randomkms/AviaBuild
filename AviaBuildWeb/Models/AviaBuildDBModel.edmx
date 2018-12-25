@@ -1,0 +1,1501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AviaBuildDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdArea" Type="int" Nullable="false" />
+          <Property Name="CehId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brigade">
+          <Key>
+            <PropertyRef Name="IdBrigade" />
+          </Key>
+          <Property Name="IdBrigade" Type="int" Nullable="false" />
+          <Property Name="AreaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ceh">
+          <Key>
+            <PropertyRef Name="IdCeh" />
+          </Key>
+          <Property Name="IdCeh" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EngTehProf">
+          <Key>
+            <PropertyRef Name="IdEngTehProf" />
+          </Key>
+          <Property Name="IdEngTehProf" Type="int" Nullable="false" />
+          <Property Name="EngTehProfName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EngTehWorker">
+          <Key>
+            <PropertyRef Name="IdEngTehWorker" />
+          </Key>
+          <Property Name="IdEngTehWorker" Type="int" Nullable="false" />
+          <Property Name="EngTehWorkerName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AreaId" Type="int" Nullable="false" />
+          <Property Name="IsHead" Type="bit" Nullable="false" />
+          <Property Name="IsMaster" Type="bit" Nullable="false" />
+          <Property Name="UnderHeadId" Type="int" />
+        </EntityType>
+        <EntityType Name="EngTehWorkerProf">
+          <Key>
+            <PropertyRef Name="EngTehWorkerId" />
+            <PropertyRef Name="EngTehProfId" />
+          </Key>
+          <Property Name="EngTehWorkerId" Type="int" Nullable="false" />
+          <Property Name="EngTehProfId" Type="int" Nullable="false" />
+          <Property Name="StartWorkDate" Type="date" />
+          <Property Name="QuitDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Plane">
+          <Key>
+            <PropertyRef Name="IdPlane" />
+          </Key>
+          <Property Name="IdPlane" Type="int" Nullable="false" />
+          <Property Name="PlaneName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PlaneType" Type="varchar" MaxLength="100" />
+          <Property Name="PlaneProductID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="CehId" Type="int" Nullable="false" />
+          <Property Name="TestEquipmentId" Type="int" Nullable="false" />
+          <Property Name="StartBuild" Type="date" />
+          <Property Name="EndBuild" Type="date" />
+          <Property Name="StartTest" Type="date" />
+          <Property Name="EndTest" Type="date" />
+          <Property Name="Category" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prof">
+          <Key>
+            <PropertyRef Name="IdProf" />
+          </Key>
+          <Property Name="IdProf" Type="int" Nullable="false" />
+          <Property Name="ProfName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rocket">
+          <Key>
+            <PropertyRef Name="IdRocket" />
+          </Key>
+          <Property Name="IdRocket" Type="int" Nullable="false" />
+          <Property Name="RocketName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RocketType" Type="varchar" MaxLength="100" />
+          <Property Name="RocketProductID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestEquipment">
+          <Key>
+            <PropertyRef Name="IdTestEquipment" />
+          </Key>
+          <Property Name="IdTestEquipment" Type="int" Nullable="false" />
+          <Property Name="TestEquipmentName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TestLabId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tester">
+          <Key>
+            <PropertyRef Name="IdTester" />
+          </Key>
+          <Property Name="IdTester" Type="int" Nullable="false" />
+          <Property Name="TesterName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TestLabId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestLab">
+          <Key>
+            <PropertyRef Name="IdTestLab" />
+          </Key>
+          <Property Name="IdTestLab" Type="int" Nullable="false" />
+          <Property Name="TestLabName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdWork" Type="int" Nullable="false" />
+          <Property Name="WorkName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="IdWorker" />
+          </Key>
+          <Property Name="IdWorker" Type="int" Nullable="false" />
+          <Property Name="BrigadeId" Type="int" Nullable="false" />
+          <Property Name="IsBrigadier" Type="bit" Nullable="false" />
+          <Property Name="WorkerName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkerProf">
+          <Key>
+            <PropertyRef Name="WorkerId" />
+            <PropertyRef Name="ProfId" />
+          </Key>
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+          <Property Name="ProfId" Type="int" Nullable="false" />
+          <Property Name="StartWorkDate" Type="date" />
+          <Property Name="QuitDate" Type="date" />
+        </EntityType>
+        <Association Name="FK__Area__CehId__4D94879B">
+          <End Role="Ceh" Type="Self.Ceh" Multiplicity="1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ceh">
+              <PropertyRef Name="IdCeh" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="CehId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Brigade__AreaId__59063A47">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="Brigade" Type="Self.Brigade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="IdArea" />
+            </Principal>
+            <Dependent Role="Brigade">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EngTehWor__AreaI__5070F446">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="EngTehWorker" Type="Self.EngTehWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="IdArea" />
+            </Principal>
+            <Dependent Role="EngTehWorker">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EngTehWor__EngTe__5535A963">
+          <End Role="EngTehWorker" Type="Self.EngTehWorker" Multiplicity="1" />
+          <End Role="EngTehWorkerProf" Type="Self.EngTehWorkerProf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngTehWorker">
+              <PropertyRef Name="IdEngTehWorker" />
+            </Principal>
+            <Dependent Role="EngTehWorkerProf">
+              <PropertyRef Name="EngTehWorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EngTehWor__EngTe__5629CD9C">
+          <End Role="EngTehProf" Type="Self.EngTehProf" Multiplicity="1" />
+          <End Role="EngTehWorkerProf" Type="Self.EngTehWorkerProf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngTehProf">
+              <PropertyRef Name="IdEngTehProf" />
+            </Principal>
+            <Dependent Role="EngTehWorkerProf">
+              <PropertyRef Name="EngTehProfId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plane__PlaneProd__4222D4EF">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Plane" Type="Self.Plane" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Plane">
+              <PropertyRef Name="PlaneProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__CehId__3E52440B">
+          <End Role="Ceh" Type="Self.Ceh" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ceh">
+              <PropertyRef Name="IdCeh" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CehId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__TestEqu__3F466844">
+          <End Role="TestEquipment" Type="Self.TestEquipment" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestEquipment">
+              <PropertyRef Name="IdTestEquipment" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="TestEquipmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rocket__RocketPr__44FF419A">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Rocket" Type="Self.Rocket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Rocket">
+              <PropertyRef Name="RocketProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TestEquip__TestL__398D8EEE">
+          <End Role="TestLab" Type="Self.TestLab" Multiplicity="1" />
+          <End Role="TestEquipment" Type="Self.TestEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestLab">
+              <PropertyRef Name="IdTestLab" />
+            </Principal>
+            <Dependent Role="TestEquipment">
+              <PropertyRef Name="TestLabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tester__TestLabI__4AB81AF0">
+          <End Role="TestLab" Type="Self.TestLab" Multiplicity="1" />
+          <End Role="Tester" Type="Self.Tester" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestLab">
+              <PropertyRef Name="IdTestLab" />
+            </Principal>
+            <Dependent Role="Tester">
+              <PropertyRef Name="TestLabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Work__ProductID__47DBAE45">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Work" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Worker__BrigadeI__5BE2A6F2">
+          <End Role="Brigade" Type="Self.Brigade" Multiplicity="1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brigade">
+              <PropertyRef Name="IdBrigade" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="BrigadeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkerPro__ProfI__619B8048">
+          <End Role="Prof" Type="Self.Prof" Multiplicity="1" />
+          <End Role="WorkerProf" Type="Self.WorkerProf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prof">
+              <PropertyRef Name="IdProf" />
+            </Principal>
+            <Dependent Role="WorkerProf">
+              <PropertyRef Name="ProfId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkerPro__Worke__60A75C0F">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="WorkerProf" Type="Self.WorkerProf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="IdWorker" />
+            </Principal>
+            <Dependent Role="WorkerProf">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="pr1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="cehId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr10" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr11" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="testLabId" Type="int" Mode="In" />
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="endDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="pr12" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productId" Type="int" Mode="In" />
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="testLabId" Type="int" Mode="In" />
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="endDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="pr13" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productId" Type="int" Mode="In" />
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="testLabId" Type="int" Mode="In" />
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="endDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="pr14" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="cehId" Type="int" Mode="In" />
+          <Parameter Name="areaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr14Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="cehId" Type="int" Mode="In" />
+          <Parameter Name="areaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="endDate" Type="date" Mode="In" />
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="cehId" Type="int" Mode="In" />
+          <Parameter Name="areaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr2Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="endDate" Type="date" Mode="In" />
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="cehId" Type="int" Mode="In" />
+          <Parameter Name="areaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cehId" Type="int" Mode="In" />
+          <Parameter Name="engProf" Type="varchar" Mode="In" />
+          <Parameter Name="workerProf" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pr4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cehId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr4Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cehId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cehId" Type="int" Mode="In" />
+          <Parameter Name="areaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr7" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cehId" Type="int" Mode="In" />
+          <Parameter Name="areaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr8" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="category" Type="varchar" Mode="In" />
+          <Parameter Name="cehId" Type="int" Mode="In" />
+          <Parameter Name="areaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pr9" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="AviaBuildDBModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brigade" EntityType="Self.Brigade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ceh" EntityType="Self.Ceh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EngTehProf" EntityType="Self.EngTehProf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EngTehWorker" EntityType="Self.EngTehWorker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EngTehWorkerProf" EntityType="Self.EngTehWorkerProf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plane" EntityType="Self.Plane" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prof" EntityType="Self.Prof" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rocket" EntityType="Self.Rocket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestEquipment" EntityType="Self.TestEquipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tester" EntityType="Self.Tester" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestLab" EntityType="Self.TestLab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkerProf" EntityType="Self.WorkerProf" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Area__CehId__4D94879B" Association="Self.FK__Area__CehId__4D94879B">
+            <End Role="Ceh" EntitySet="Ceh" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Brigade__AreaId__59063A47" Association="Self.FK__Brigade__AreaId__59063A47">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Brigade" EntitySet="Brigade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EngTehWor__AreaI__5070F446" Association="Self.FK__EngTehWor__AreaI__5070F446">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="EngTehWorker" EntitySet="EngTehWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EngTehWor__EngTe__5535A963" Association="Self.FK__EngTehWor__EngTe__5535A963">
+            <End Role="EngTehWorker" EntitySet="EngTehWorker" />
+            <End Role="EngTehWorkerProf" EntitySet="EngTehWorkerProf" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EngTehWor__EngTe__5629CD9C" Association="Self.FK__EngTehWor__EngTe__5629CD9C">
+            <End Role="EngTehProf" EntitySet="EngTehProf" />
+            <End Role="EngTehWorkerProf" EntitySet="EngTehWorkerProf" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plane__PlaneProd__4222D4EF" Association="Self.FK__Plane__PlaneProd__4222D4EF">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Plane" EntitySet="Plane" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__CehId__3E52440B" Association="Self.FK__Product__CehId__3E52440B">
+            <End Role="Ceh" EntitySet="Ceh" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__TestEqu__3F466844" Association="Self.FK__Product__TestEqu__3F466844">
+            <End Role="TestEquipment" EntitySet="TestEquipment" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rocket__RocketPr__44FF419A" Association="Self.FK__Rocket__RocketPr__44FF419A">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Rocket" EntitySet="Rocket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TestEquip__TestL__398D8EEE" Association="Self.FK__TestEquip__TestL__398D8EEE">
+            <End Role="TestLab" EntitySet="TestLab" />
+            <End Role="TestEquipment" EntitySet="TestEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tester__TestLabI__4AB81AF0" Association="Self.FK__Tester__TestLabI__4AB81AF0">
+            <End Role="TestLab" EntitySet="TestLab" />
+            <End Role="Tester" EntitySet="Tester" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Work__ProductID__47DBAE45" Association="Self.FK__Work__ProductID__47DBAE45">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Work" EntitySet="Work" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__BrigadeI__5BE2A6F2" Association="Self.FK__Worker__BrigadeI__5BE2A6F2">
+            <End Role="Brigade" EntitySet="Brigade" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkerPro__ProfI__619B8048" Association="Self.FK__WorkerPro__ProfI__619B8048">
+            <End Role="Prof" EntitySet="Prof" />
+            <End Role="WorkerProf" EntitySet="WorkerProf" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkerPro__Worke__60A75C0F" Association="Self.FK__WorkerPro__Worke__60A75C0F">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="WorkerProf" EntitySet="WorkerProf" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AviaBuildDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdArea" Type="Int32" Nullable="false" />
+          <Property Name="CehId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ceh" Relationship="Self.FK__Area__CehId__4D94879B" FromRole="Area" ToRole="Ceh" />
+          <NavigationProperty Name="Brigades" Relationship="Self.FK__Brigade__AreaId__59063A47" FromRole="Area" ToRole="Brigade" />
+          <NavigationProperty Name="EngTehWorkers" Relationship="Self.FK__EngTehWor__AreaI__5070F446" FromRole="Area" ToRole="EngTehWorker" />
+        </EntityType>
+        <EntityType Name="Brigade">
+          <Key>
+            <PropertyRef Name="IdBrigade" />
+          </Key>
+          <Property Name="IdBrigade" Type="Int32" Nullable="false" />
+          <Property Name="AreaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Area" Relationship="Self.FK__Brigade__AreaId__59063A47" FromRole="Brigade" ToRole="Area" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK__Worker__BrigadeI__5BE2A6F2" FromRole="Brigade" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Ceh">
+          <Key>
+            <PropertyRef Name="IdCeh" />
+          </Key>
+          <Property Name="IdCeh" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Areas" Relationship="Self.FK__Area__CehId__4D94879B" FromRole="Ceh" ToRole="Area" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product__CehId__3E52440B" FromRole="Ceh" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="EngTehProf">
+          <Key>
+            <PropertyRef Name="IdEngTehProf" />
+          </Key>
+          <Property Name="IdEngTehProf" Type="Int32" Nullable="false" />
+          <Property Name="EngTehProfName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EngTehWorkerProfs" Relationship="Self.FK__EngTehWor__EngTe__5629CD9C" FromRole="EngTehProf" ToRole="EngTehWorkerProf" />
+        </EntityType>
+        <EntityType Name="EngTehWorker">
+          <Key>
+            <PropertyRef Name="IdEngTehWorker" />
+          </Key>
+          <Property Name="IdEngTehWorker" Type="Int32" Nullable="false" />
+          <Property Name="EngTehWorkerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AreaId" Type="Int32" Nullable="false" />
+          <Property Name="IsHead" Type="Boolean" Nullable="false" />
+          <Property Name="IsMaster" Type="Boolean" Nullable="false" />
+          <Property Name="UnderHeadId" Type="Int32" />
+          <NavigationProperty Name="Area" Relationship="Self.FK__EngTehWor__AreaI__5070F446" FromRole="EngTehWorker" ToRole="Area" />
+          <NavigationProperty Name="EngTehWorkerProfs" Relationship="Self.FK__EngTehWor__EngTe__5535A963" FromRole="EngTehWorker" ToRole="EngTehWorkerProf" />
+        </EntityType>
+        <EntityType Name="EngTehWorkerProf">
+          <Key>
+            <PropertyRef Name="EngTehWorkerId" />
+            <PropertyRef Name="EngTehProfId" />
+          </Key>
+          <Property Name="EngTehWorkerId" Type="Int32" Nullable="false" />
+          <Property Name="EngTehProfId" Type="Int32" Nullable="false" />
+          <Property Name="StartWorkDate" Type="DateTime" Precision="0" />
+          <Property Name="QuitDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="EngTehProf" Relationship="Self.FK__EngTehWor__EngTe__5629CD9C" FromRole="EngTehWorkerProf" ToRole="EngTehProf" />
+          <NavigationProperty Name="EngTehWorker" Relationship="Self.FK__EngTehWor__EngTe__5535A963" FromRole="EngTehWorkerProf" ToRole="EngTehWorker" />
+        </EntityType>
+        <EntityType Name="Plane">
+          <Key>
+            <PropertyRef Name="IdPlane" />
+          </Key>
+          <Property Name="IdPlane" Type="Int32" Nullable="false" />
+          <Property Name="PlaneName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PlaneType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PlaneProductID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Plane__PlaneProd__4222D4EF" FromRole="Plane" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="CehId" Type="Int32" Nullable="false" />
+          <Property Name="TestEquipmentId" Type="Int32" Nullable="false" />
+          <Property Name="StartBuild" Type="DateTime" Precision="0" />
+          <Property Name="EndBuild" Type="DateTime" Precision="0" />
+          <Property Name="StartTest" Type="DateTime" Precision="0" />
+          <Property Name="EndTest" Type="DateTime" Precision="0" />
+          <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ceh" Relationship="Self.FK__Product__CehId__3E52440B" FromRole="Product" ToRole="Ceh" />
+          <NavigationProperty Name="Planes" Relationship="Self.FK__Plane__PlaneProd__4222D4EF" FromRole="Product" ToRole="Plane" />
+          <NavigationProperty Name="TestEquipment" Relationship="Self.FK__Product__TestEqu__3F466844" FromRole="Product" ToRole="TestEquipment" />
+          <NavigationProperty Name="Rockets" Relationship="Self.FK__Rocket__RocketPr__44FF419A" FromRole="Product" ToRole="Rocket" />
+          <NavigationProperty Name="Works" Relationship="Self.FK__Work__ProductID__47DBAE45" FromRole="Product" ToRole="Work" />
+        </EntityType>
+        <EntityType Name="Prof">
+          <Key>
+            <PropertyRef Name="IdProf" />
+          </Key>
+          <Property Name="IdProf" Type="Int32" Nullable="false" />
+          <Property Name="ProfName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="WorkerProfs" Relationship="Self.FK__WorkerPro__ProfI__619B8048" FromRole="Prof" ToRole="WorkerProf" />
+        </EntityType>
+        <EntityType Name="Rocket">
+          <Key>
+            <PropertyRef Name="IdRocket" />
+          </Key>
+          <Property Name="IdRocket" Type="Int32" Nullable="false" />
+          <Property Name="RocketName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RocketType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RocketProductID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Rocket__RocketPr__44FF419A" FromRole="Rocket" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="TestEquipment">
+          <Key>
+            <PropertyRef Name="IdTestEquipment" />
+          </Key>
+          <Property Name="IdTestEquipment" Type="Int32" Nullable="false" />
+          <Property Name="TestEquipmentName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TestLabId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product__TestEqu__3F466844" FromRole="TestEquipment" ToRole="Product" />
+          <NavigationProperty Name="TestLab" Relationship="Self.FK__TestEquip__TestL__398D8EEE" FromRole="TestEquipment" ToRole="TestLab" />
+        </EntityType>
+        <EntityType Name="Tester">
+          <Key>
+            <PropertyRef Name="IdTester" />
+          </Key>
+          <Property Name="IdTester" Type="Int32" Nullable="false" />
+          <Property Name="TesterName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TestLabId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TestLab" Relationship="Self.FK__Tester__TestLabI__4AB81AF0" FromRole="Tester" ToRole="TestLab" />
+        </EntityType>
+        <EntityType Name="TestLab">
+          <Key>
+            <PropertyRef Name="IdTestLab" />
+          </Key>
+          <Property Name="IdTestLab" Type="Int32" Nullable="false" />
+          <Property Name="TestLabName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TestEquipments" Relationship="Self.FK__TestEquip__TestL__398D8EEE" FromRole="TestLab" ToRole="TestEquipment" />
+          <NavigationProperty Name="Testers" Relationship="Self.FK__Tester__TestLabI__4AB81AF0" FromRole="TestLab" ToRole="Tester" />
+        </EntityType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdWork" Type="Int32" Nullable="false" />
+          <Property Name="WorkName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Work__ProductID__47DBAE45" FromRole="Work" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="IdWorker" />
+          </Key>
+          <Property Name="IdWorker" Type="Int32" Nullable="false" />
+          <Property Name="BrigadeId" Type="Int32" Nullable="false" />
+          <Property Name="IsBrigadier" Type="Boolean" Nullable="false" />
+          <Property Name="WorkerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Brigade" Relationship="Self.FK__Worker__BrigadeI__5BE2A6F2" FromRole="Worker" ToRole="Brigade" />
+          <NavigationProperty Name="WorkerProfs" Relationship="Self.FK__WorkerPro__Worke__60A75C0F" FromRole="Worker" ToRole="WorkerProf" />
+        </EntityType>
+        <EntityType Name="WorkerProf">
+          <Key>
+            <PropertyRef Name="WorkerId" />
+            <PropertyRef Name="ProfId" />
+          </Key>
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <Property Name="ProfId" Type="Int32" Nullable="false" />
+          <Property Name="StartWorkDate" Type="DateTime" Precision="0" />
+          <Property Name="QuitDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Prof" Relationship="Self.FK__WorkerPro__ProfI__619B8048" FromRole="WorkerProf" ToRole="Prof" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__WorkerPro__Worke__60A75C0F" FromRole="WorkerProf" ToRole="Worker" />
+        </EntityType>
+        <Association Name="FK__Area__CehId__4D94879B">
+          <End Role="Ceh" Type="Self.Ceh" Multiplicity="1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ceh">
+              <PropertyRef Name="IdCeh" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="CehId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Brigade__AreaId__59063A47">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="Brigade" Type="Self.Brigade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="IdArea" />
+            </Principal>
+            <Dependent Role="Brigade">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EngTehWor__AreaI__5070F446">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="EngTehWorker" Type="Self.EngTehWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="IdArea" />
+            </Principal>
+            <Dependent Role="EngTehWorker">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Worker__BrigadeI__5BE2A6F2">
+          <End Role="Brigade" Type="Self.Brigade" Multiplicity="1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brigade">
+              <PropertyRef Name="IdBrigade" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="BrigadeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__CehId__3E52440B">
+          <End Role="Ceh" Type="Self.Ceh" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ceh">
+              <PropertyRef Name="IdCeh" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CehId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EngTehWor__EngTe__5629CD9C">
+          <End Role="EngTehProf" Type="Self.EngTehProf" Multiplicity="1" />
+          <End Role="EngTehWorkerProf" Type="Self.EngTehWorkerProf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngTehProf">
+              <PropertyRef Name="IdEngTehProf" />
+            </Principal>
+            <Dependent Role="EngTehWorkerProf">
+              <PropertyRef Name="EngTehProfId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EngTehWor__EngTe__5535A963">
+          <End Role="EngTehWorker" Type="Self.EngTehWorker" Multiplicity="1" />
+          <End Role="EngTehWorkerProf" Type="Self.EngTehWorkerProf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngTehWorker">
+              <PropertyRef Name="IdEngTehWorker" />
+            </Principal>
+            <Dependent Role="EngTehWorkerProf">
+              <PropertyRef Name="EngTehWorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plane__PlaneProd__4222D4EF">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Plane" Type="Self.Plane" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Plane">
+              <PropertyRef Name="PlaneProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__TestEqu__3F466844">
+          <End Role="TestEquipment" Type="Self.TestEquipment" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestEquipment">
+              <PropertyRef Name="IdTestEquipment" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="TestEquipmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rocket__RocketPr__44FF419A">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Rocket" Type="Self.Rocket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Rocket">
+              <PropertyRef Name="RocketProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Work__ProductID__47DBAE45">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Work" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkerPro__ProfI__619B8048">
+          <End Role="Prof" Type="Self.Prof" Multiplicity="1" />
+          <End Role="WorkerProf" Type="Self.WorkerProf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prof">
+              <PropertyRef Name="IdProf" />
+            </Principal>
+            <Dependent Role="WorkerProf">
+              <PropertyRef Name="ProfId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TestEquip__TestL__398D8EEE">
+          <End Role="TestLab" Type="Self.TestLab" Multiplicity="1" />
+          <End Role="TestEquipment" Type="Self.TestEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestLab">
+              <PropertyRef Name="IdTestLab" />
+            </Principal>
+            <Dependent Role="TestEquipment">
+              <PropertyRef Name="TestLabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tester__TestLabI__4AB81AF0">
+          <End Role="TestLab" Type="Self.TestLab" Multiplicity="1" />
+          <End Role="Tester" Type="Self.Tester" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestLab">
+              <PropertyRef Name="IdTestLab" />
+            </Principal>
+            <Dependent Role="Tester">
+              <PropertyRef Name="TestLabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkerPro__Worke__60A75C0F">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="WorkerProf" Type="Self.WorkerProf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="IdWorker" />
+            </Principal>
+            <Dependent Role="WorkerProf">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AviaBuildDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Areas" EntityType="Self.Area" />
+          <EntitySet Name="Brigades" EntityType="Self.Brigade" />
+          <EntitySet Name="Cehs" EntityType="Self.Ceh" />
+          <EntitySet Name="EngTehProfs" EntityType="Self.EngTehProf" />
+          <EntitySet Name="EngTehWorkers" EntityType="Self.EngTehWorker" />
+          <EntitySet Name="EngTehWorkerProfs" EntityType="Self.EngTehWorkerProf" />
+          <EntitySet Name="Planes" EntityType="Self.Plane" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Profs" EntityType="Self.Prof" />
+          <EntitySet Name="Rockets" EntityType="Self.Rocket" />
+          <EntitySet Name="TestEquipments" EntityType="Self.TestEquipment" />
+          <EntitySet Name="Testers" EntityType="Self.Tester" />
+          <EntitySet Name="TestLabs" EntityType="Self.TestLab" />
+          <EntitySet Name="Works" EntityType="Self.Work" />
+          <EntitySet Name="Workers" EntityType="Self.Worker" />
+          <EntitySet Name="WorkerProfs" EntityType="Self.WorkerProf" />
+          <AssociationSet Name="FK__Area__CehId__4D94879B" Association="Self.FK__Area__CehId__4D94879B">
+            <End Role="Ceh" EntitySet="Cehs" />
+            <End Role="Area" EntitySet="Areas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Brigade__AreaId__59063A47" Association="Self.FK__Brigade__AreaId__59063A47">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="Brigade" EntitySet="Brigades" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EngTehWor__AreaI__5070F446" Association="Self.FK__EngTehWor__AreaI__5070F446">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="EngTehWorker" EntitySet="EngTehWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__BrigadeI__5BE2A6F2" Association="Self.FK__Worker__BrigadeI__5BE2A6F2">
+            <End Role="Brigade" EntitySet="Brigades" />
+            <End Role="Worker" EntitySet="Workers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__CehId__3E52440B" Association="Self.FK__Product__CehId__3E52440B">
+            <End Role="Ceh" EntitySet="Cehs" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EngTehWor__EngTe__5629CD9C" Association="Self.FK__EngTehWor__EngTe__5629CD9C">
+            <End Role="EngTehProf" EntitySet="EngTehProfs" />
+            <End Role="EngTehWorkerProf" EntitySet="EngTehWorkerProfs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EngTehWor__EngTe__5535A963" Association="Self.FK__EngTehWor__EngTe__5535A963">
+            <End Role="EngTehWorker" EntitySet="EngTehWorkers" />
+            <End Role="EngTehWorkerProf" EntitySet="EngTehWorkerProfs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plane__PlaneProd__4222D4EF" Association="Self.FK__Plane__PlaneProd__4222D4EF">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Plane" EntitySet="Planes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__TestEqu__3F466844" Association="Self.FK__Product__TestEqu__3F466844">
+            <End Role="TestEquipment" EntitySet="TestEquipments" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rocket__RocketPr__44FF419A" Association="Self.FK__Rocket__RocketPr__44FF419A">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Rocket" EntitySet="Rockets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Work__ProductID__47DBAE45" Association="Self.FK__Work__ProductID__47DBAE45">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkerPro__ProfI__619B8048" Association="Self.FK__WorkerPro__ProfI__619B8048">
+            <End Role="Prof" EntitySet="Profs" />
+            <End Role="WorkerProf" EntitySet="WorkerProfs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TestEquip__TestL__398D8EEE" Association="Self.FK__TestEquip__TestL__398D8EEE">
+            <End Role="TestLab" EntitySet="TestLabs" />
+            <End Role="TestEquipment" EntitySet="TestEquipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tester__TestLabI__4AB81AF0" Association="Self.FK__Tester__TestLabI__4AB81AF0">
+            <End Role="TestLab" EntitySet="TestLabs" />
+            <End Role="Tester" EntitySet="Testers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkerPro__Worke__60A75C0F" Association="Self.FK__WorkerPro__Worke__60A75C0F">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="WorkerProf" EntitySet="WorkerProfs" />
+          </AssociationSet>
+          <FunctionImport Name="pr1" ReturnType="Collection(AviaBuildDBModel.pr1_Result)">
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr10" ReturnType="Collection(AviaBuildDBModel.pr10_Result)">
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr11" ReturnType="Collection(AviaBuildDBModel.pr11_Result)">
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="testLabId" Mode="In" Type="Int32" />
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="pr12" ReturnType="Collection(AviaBuildDBModel.pr12_Result)">
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="testLabId" Mode="In" Type="Int32" />
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="pr13" ReturnType="Collection(AviaBuildDBModel.pr13_Result)">
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="testLabId" Mode="In" Type="Int32" />
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="pr14" ReturnType="Collection(AviaBuildDBModel.pr14_Result)">
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+            <Parameter Name="areaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr14Count" ReturnType="Collection(Int32)">
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+            <Parameter Name="areaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr2" ReturnType="Collection(AviaBuildDBModel.pr2_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+            <Parameter Name="areaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr2Count" ReturnType="Collection(Int32)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+            <Parameter Name="areaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr3" ReturnType="Collection(AviaBuildDBModel.pr3_Result)">
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+            <Parameter Name="engProf" Mode="In" Type="String" />
+            <Parameter Name="workerProf" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pr4" ReturnType="Collection(AviaBuildDBModel.pr4_Result)">
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr4Count" ReturnType="Collection(Int32)">
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr5" ReturnType="Collection(AviaBuildDBModel.pr5_Result)">
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr6" ReturnType="Collection(AviaBuildDBModel.pr6_Result)">
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+            <Parameter Name="areaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr7" ReturnType="Collection(AviaBuildDBModel.pr7_Result)">
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+            <Parameter Name="areaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr8" ReturnType="Collection(AviaBuildDBModel.pr8_Result)">
+            <Parameter Name="category" Mode="In" Type="String" />
+            <Parameter Name="cehId" Mode="In" Type="Int32" />
+            <Parameter Name="areaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pr9" ReturnType="Collection(AviaBuildDBModel.pr9_Result)">
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="pr1_Result">
+          <Property Type="String" Name="PlaneType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RocketType" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="pr10_Result">
+          <Property Type="Int32" Name="IdTestLab" Nullable="false" />
+          <Property Type="String" Name="TestLabName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="pr11_Result">
+          <Property Type="Int32" Name="IdProduct" Nullable="false" />
+          <Property Type="Int32" Name="CehId" Nullable="false" />
+          <Property Type="Int32" Name="TestEquipmentId" Nullable="false" />
+          <Property Type="DateTime" Name="StartBuild" Nullable="true" />
+          <Property Type="DateTime" Name="EndBuild" Nullable="true" />
+          <Property Type="DateTime" Name="StartTest" Nullable="true" />
+          <Property Type="DateTime" Name="EndTest" Nullable="true" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdTestEquipment" Nullable="false" />
+          <Property Type="String" Name="TestEquipmentName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="TestLabId" Nullable="false" />
+          <Property Type="Int32" Name="IdTestLab" Nullable="false" />
+          <Property Type="String" Name="TestLabName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="pr12_Result">
+          <Property Type="Int32" Name="TestLabId" Nullable="false" />
+          <Property Type="Int32" Name="IdTester" Nullable="false" />
+          <Property Type="String" Name="TesterName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="pr13_Result">
+          <Property Type="Int32" Name="TestLabId" Nullable="false" />
+          <Property Type="Int32" Name="IdTestEquipment" Nullable="false" />
+          <Property Type="String" Name="TestEquipmentName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="pr14_Result">
+          <Property Type="Int32" Name="IdProduct" Nullable="false" />
+          <Property Type="Int32" Name="CehId" Nullable="false" />
+          <Property Type="Int32" Name="TestEquipmentId" Nullable="false" />
+          <Property Type="DateTime" Name="StartBuild" Nullable="true" />
+          <Property Type="DateTime" Name="EndBuild" Nullable="true" />
+          <Property Type="DateTime" Name="StartTest" Nullable="true" />
+          <Property Type="DateTime" Name="EndTest" Nullable="true" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdCeh" Nullable="false" />
+          <Property Type="Int32" Name="IdArea" Nullable="false" />
+          <Property Type="Int32" Name="CehId1" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="pr2_Result">
+          <Property Type="Int32" Name="IdProduct" Nullable="false" />
+          <Property Type="Int32" Name="TestEquipmentId" Nullable="false" />
+          <Property Type="DateTime" Name="StartBuild" Nullable="true" />
+          <Property Type="DateTime" Name="EndBuild" Nullable="true" />
+          <Property Type="DateTime" Name="StartTest" Nullable="true" />
+          <Property Type="DateTime" Name="EndTest" Nullable="true" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CehId" Nullable="false" />
+          <Property Type="Int32" Name="IdArea" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="pr3_Result">
+          <Property Type="Int32" Name="BrigadeId" Nullable="false" />
+          <Property Type="Int32" Name="IdWorker" Nullable="false" />
+          <Property Type="Boolean" Name="IsBrigadier" Nullable="false" />
+          <Property Type="String" Name="WorkerName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ProfName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="AreaId" Nullable="false" />
+          <Property Type="Int32" Name="IdEngTehWorker" Nullable="false" />
+          <Property Type="String" Name="EngTehWorkerName" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="IsHead" Nullable="false" />
+          <Property Type="Boolean" Name="IsMaster" Nullable="false" />
+          <Property Type="Int32" Name="UnderHeadId" Nullable="true" />
+          <Property Type="String" Name="EngTehProfName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="pr4_Result">
+          <Property Type="Int32" Name="IdCeh" Nullable="false" />
+          <Property Type="Int32" Name="IdArea" Nullable="false" />
+          <Property Type="Int32" Name="CehId" Nullable="false" />
+          <Property Type="Int32" Name="IdEngTehWorker" Nullable="false" />
+          <Property Type="String" Name="EngTehWorkerName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="AreaId" Nullable="false" />
+          <Property Type="Boolean" Name="IsHead" Nullable="false" />
+          <Property Type="Boolean" Name="IsMaster" Nullable="false" />
+          <Property Type="Int32" Name="UnderHeadId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="pr5_Result">
+          <Property Type="Int32" Name="IdProduct" Nullable="false" />
+          <Property Type="Int32" Name="CehId" Nullable="false" />
+          <Property Type="Int32" Name="TestEquipmentId" Nullable="false" />
+          <Property Type="DateTime" Name="StartBuild" Nullable="true" />
+          <Property Type="DateTime" Name="EndBuild" Nullable="true" />
+          <Property Type="DateTime" Name="StartTest" Nullable="true" />
+          <Property Type="DateTime" Name="EndTest" Nullable="true" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdWork" Nullable="false" />
+          <Property Type="String" Name="WorkName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="pr6_Result">
+          <Property Type="Int32" Name="IdCeh" Nullable="false" />
+          <Property Type="Int32" Name="IdArea" Nullable="false" />
+          <Property Type="Int32" Name="CehId" Nullable="false" />
+          <Property Type="Int32" Name="IdBrigade" Nullable="false" />
+          <Property Type="Int32" Name="AreaId" Nullable="false" />
+          <Property Type="Int32" Name="IdWorker" Nullable="false" />
+          <Property Type="Int32" Name="BrigadeId" Nullable="false" />
+          <Property Type="Boolean" Name="IsBrigadier" Nullable="false" />
+          <Property Type="String" Name="WorkerName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="pr7_Result">
+          <Property Type="Int32" Name="IdCeh" Nullable="false" />
+          <Property Type="Int32" Name="IdArea" Nullable="false" />
+          <Property Type="Int32" Name="CehId" Nullable="false" />
+          <Property Type="Int32" Name="IdEngTehWorker" Nullable="false" />
+          <Property Type="String" Name="EngTehWorkerName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="AreaId" Nullable="false" />
+          <Property Type="Boolean" Name="IsHead" Nullable="false" />
+          <Property Type="Boolean" Name="IsMaster" Nullable="false" />
+          <Property Type="Int32" Name="UnderHeadId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="pr8_Result">
+          <Property Type="Int32" Name="IdProduct" Nullable="false" />
+          <Property Type="Int32" Name="CehId" Nullable="false" />
+          <Property Type="Int32" Name="IdArea" Nullable="false" />
+          <Property Type="DateTime" Name="StartBuild" Nullable="true" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="pr9_Result">
+          <Property Type="Int32" Name="BrigadeId" Nullable="false" />
+          <Property Type="Int32" Name="IdWorker" Nullable="false" />
+          <Property Type="Boolean" Name="IsBrigadier" Nullable="false" />
+          <Property Type="String" Name="WorkerName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AviaBuildDBModelStoreContainer" CdmEntityContainer="AviaBuildDBEntities">
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="CehId" ColumnName="CehId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brigades">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.Brigade">
+              <MappingFragment StoreEntitySet="Brigade">
+                <ScalarProperty Name="IdBrigade" ColumnName="IdBrigade" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cehs">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.Ceh">
+              <MappingFragment StoreEntitySet="Ceh">
+                <ScalarProperty Name="IdCeh" ColumnName="IdCeh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EngTehProfs">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.EngTehProf">
+              <MappingFragment StoreEntitySet="EngTehProf">
+                <ScalarProperty Name="IdEngTehProf" ColumnName="IdEngTehProf" />
+                <ScalarProperty Name="EngTehProfName" ColumnName="EngTehProfName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EngTehWorkers">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.EngTehWorker">
+              <MappingFragment StoreEntitySet="EngTehWorker">
+                <ScalarProperty Name="IdEngTehWorker" ColumnName="IdEngTehWorker" />
+                <ScalarProperty Name="EngTehWorkerName" ColumnName="EngTehWorkerName" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="IsHead" ColumnName="IsHead" />
+                <ScalarProperty Name="IsMaster" ColumnName="IsMaster" />
+                <ScalarProperty Name="UnderHeadId" ColumnName="UnderHeadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EngTehWorkerProfs">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.EngTehWorkerProf">
+              <MappingFragment StoreEntitySet="EngTehWorkerProf">
+                <ScalarProperty Name="EngTehWorkerId" ColumnName="EngTehWorkerId" />
+                <ScalarProperty Name="EngTehProfId" ColumnName="EngTehProfId" />
+                <ScalarProperty Name="StartWorkDate" ColumnName="StartWorkDate" />
+                <ScalarProperty Name="QuitDate" ColumnName="QuitDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Planes">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.Plane">
+              <MappingFragment StoreEntitySet="Plane">
+                <ScalarProperty Name="IdPlane" ColumnName="IdPlane" />
+                <ScalarProperty Name="PlaneName" ColumnName="PlaneName" />
+                <ScalarProperty Name="PlaneType" ColumnName="PlaneType" />
+                <ScalarProperty Name="PlaneProductID" ColumnName="PlaneProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="CehId" ColumnName="CehId" />
+                <ScalarProperty Name="TestEquipmentId" ColumnName="TestEquipmentId" />
+                <ScalarProperty Name="StartBuild" ColumnName="StartBuild" />
+                <ScalarProperty Name="EndBuild" ColumnName="EndBuild" />
+                <ScalarProperty Name="StartTest" ColumnName="StartTest" />
+                <ScalarProperty Name="EndTest" ColumnName="EndTest" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profs">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.Prof">
+              <MappingFragment StoreEntitySet="Prof">
+                <ScalarProperty Name="IdProf" ColumnName="IdProf" />
+                <ScalarProperty Name="ProfName" ColumnName="ProfName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rockets">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.Rocket">
+              <MappingFragment StoreEntitySet="Rocket">
+                <ScalarProperty Name="IdRocket" ColumnName="IdRocket" />
+                <ScalarProperty Name="RocketName" ColumnName="RocketName" />
+                <ScalarProperty Name="RocketType" ColumnName="RocketType" />
+                <ScalarProperty Name="RocketProductID" ColumnName="RocketProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestEquipments">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.TestEquipment">
+              <MappingFragment StoreEntitySet="TestEquipment">
+                <ScalarProperty Name="IdTestEquipment" ColumnName="IdTestEquipment" />
+                <ScalarProperty Name="TestEquipmentName" ColumnName="TestEquipmentName" />
+                <ScalarProperty Name="TestLabId" ColumnName="TestLabId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Testers">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.Tester">
+              <MappingFragment StoreEntitySet="Tester">
+                <ScalarProperty Name="IdTester" ColumnName="IdTester" />
+                <ScalarProperty Name="TesterName" ColumnName="TesterName" />
+                <ScalarProperty Name="TestLabId" ColumnName="TestLabId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestLabs">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.TestLab">
+              <MappingFragment StoreEntitySet="TestLab">
+                <ScalarProperty Name="IdTestLab" ColumnName="IdTestLab" />
+                <ScalarProperty Name="TestLabName" ColumnName="TestLabName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Works">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.Work">
+              <MappingFragment StoreEntitySet="Work">
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workers">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.Worker">
+              <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
+                <ScalarProperty Name="BrigadeId" ColumnName="BrigadeId" />
+                <ScalarProperty Name="IsBrigadier" ColumnName="IsBrigadier" />
+                <ScalarProperty Name="WorkerName" ColumnName="WorkerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkerProfs">
+            <EntityTypeMapping TypeName="AviaBuildDBModel.WorkerProf">
+              <MappingFragment StoreEntitySet="WorkerProf">
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="ProfId" ColumnName="ProfId" />
+                <ScalarProperty Name="StartWorkDate" ColumnName="StartWorkDate" />
+                <ScalarProperty Name="QuitDate" ColumnName="QuitDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="pr1" FunctionName="AviaBuildDBModel.Store.pr1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr1_Result">
+                <ScalarProperty Name="PlaneType" ColumnName="PlaneType" />
+                <ScalarProperty Name="RocketType" ColumnName="RocketType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr10" FunctionName="AviaBuildDBModel.Store.pr10">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr10_Result">
+                <ScalarProperty Name="IdTestLab" ColumnName="IdTestLab" />
+                <ScalarProperty Name="TestLabName" ColumnName="TestLabName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr11" FunctionName="AviaBuildDBModel.Store.pr11">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr11_Result">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="CehId" ColumnName="CehId" />
+                <ScalarProperty Name="TestEquipmentId" ColumnName="TestEquipmentId" />
+                <ScalarProperty Name="StartBuild" ColumnName="StartBuild" />
+                <ScalarProperty Name="EndBuild" ColumnName="EndBuild" />
+                <ScalarProperty Name="StartTest" ColumnName="StartTest" />
+                <ScalarProperty Name="EndTest" ColumnName="EndTest" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="IdTestEquipment" ColumnName="IdTestEquipment" />
+                <ScalarProperty Name="TestEquipmentName" ColumnName="TestEquipmentName" />
+                <ScalarProperty Name="TestLabId" ColumnName="TestLabId" />
+                <ScalarProperty Name="IdTestLab" ColumnName="IdTestLab" />
+                <ScalarProperty Name="TestLabName" ColumnName="TestLabName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr12" FunctionName="AviaBuildDBModel.Store.pr12">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr12_Result">
+                <ScalarProperty Name="TestLabId" ColumnName="TestLabId" />
+                <ScalarProperty Name="IdTester" ColumnName="IdTester" />
+                <ScalarProperty Name="TesterName" ColumnName="TesterName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr13" FunctionName="AviaBuildDBModel.Store.pr13">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr13_Result">
+                <ScalarProperty Name="TestLabId" ColumnName="TestLabId" />
+                <ScalarProperty Name="IdTestEquipment" ColumnName="IdTestEquipment" />
+                <ScalarProperty Name="TestEquipmentName" ColumnName="TestEquipmentName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr14" FunctionName="AviaBuildDBModel.Store.pr14">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr14_Result">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="CehId" ColumnName="CehId" />
+                <ScalarProperty Name="TestEquipmentId" ColumnName="TestEquipmentId" />
+                <ScalarProperty Name="StartBuild" ColumnName="StartBuild" />
+                <ScalarProperty Name="EndBuild" ColumnName="EndBuild" />
+                <ScalarProperty Name="StartTest" ColumnName="StartTest" />
+                <ScalarProperty Name="EndTest" ColumnName="EndTest" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="IdCeh" ColumnName="IdCeh" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="CehId1" ColumnName="CehId1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr14Count" FunctionName="AviaBuildDBModel.Store.pr14Count" />
+          <FunctionImportMapping FunctionImportName="pr2" FunctionName="AviaBuildDBModel.Store.pr2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr2_Result">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="TestEquipmentId" ColumnName="TestEquipmentId" />
+                <ScalarProperty Name="StartBuild" ColumnName="StartBuild" />
+                <ScalarProperty Name="EndBuild" ColumnName="EndBuild" />
+                <ScalarProperty Name="StartTest" ColumnName="StartTest" />
+                <ScalarProperty Name="EndTest" ColumnName="EndTest" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="CehId" ColumnName="CehId" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr2Count" FunctionName="AviaBuildDBModel.Store.pr2Count" />
+          <FunctionImportMapping FunctionImportName="pr3" FunctionName="AviaBuildDBModel.Store.pr3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr3_Result">
+                <ScalarProperty Name="BrigadeId" ColumnName="BrigadeId" />
+                <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
+                <ScalarProperty Name="IsBrigadier" ColumnName="IsBrigadier" />
+                <ScalarProperty Name="WorkerName" ColumnName="WorkerName" />
+                <ScalarProperty Name="ProfName" ColumnName="ProfName" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="IdEngTehWorker" ColumnName="IdEngTehWorker" />
+                <ScalarProperty Name="EngTehWorkerName" ColumnName="EngTehWorkerName" />
+                <ScalarProperty Name="IsHead" ColumnName="IsHead" />
+                <ScalarProperty Name="IsMaster" ColumnName="IsMaster" />
+                <ScalarProperty Name="UnderHeadId" ColumnName="UnderHeadId" />
+                <ScalarProperty Name="EngTehProfName" ColumnName="EngTehProfName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr4" FunctionName="AviaBuildDBModel.Store.pr4">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr4_Result">
+                <ScalarProperty Name="IdCeh" ColumnName="IdCeh" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="CehId" ColumnName="CehId" />
+                <ScalarProperty Name="IdEngTehWorker" ColumnName="IdEngTehWorker" />
+                <ScalarProperty Name="EngTehWorkerName" ColumnName="EngTehWorkerName" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="IsHead" ColumnName="IsHead" />
+                <ScalarProperty Name="IsMaster" ColumnName="IsMaster" />
+                <ScalarProperty Name="UnderHeadId" ColumnName="UnderHeadId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr4Count" FunctionName="AviaBuildDBModel.Store.pr4Count" />
+          <FunctionImportMapping FunctionImportName="pr5" FunctionName="AviaBuildDBModel.Store.pr5">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr5_Result">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="CehId" ColumnName="CehId" />
+                <ScalarProperty Name="TestEquipmentId" ColumnName="TestEquipmentId" />
+                <ScalarProperty Name="StartBuild" ColumnName="StartBuild" />
+                <ScalarProperty Name="EndBuild" ColumnName="EndBuild" />
+                <ScalarProperty Name="StartTest" ColumnName="StartTest" />
+                <ScalarProperty Name="EndTest" ColumnName="EndTest" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr6" FunctionName="AviaBuildDBModel.Store.pr6">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr6_Result">
+                <ScalarProperty Name="IdCeh" ColumnName="IdCeh" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="CehId" ColumnName="CehId" />
+                <ScalarProperty Name="IdBrigade" ColumnName="IdBrigade" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
+                <ScalarProperty Name="BrigadeId" ColumnName="BrigadeId" />
+                <ScalarProperty Name="IsBrigadier" ColumnName="IsBrigadier" />
+                <ScalarProperty Name="WorkerName" ColumnName="WorkerName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr7" FunctionName="AviaBuildDBModel.Store.pr7">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr7_Result">
+                <ScalarProperty Name="IdCeh" ColumnName="IdCeh" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="CehId" ColumnName="CehId" />
+                <ScalarProperty Name="IdEngTehWorker" ColumnName="IdEngTehWorker" />
+                <ScalarProperty Name="EngTehWorkerName" ColumnName="EngTehWorkerName" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="IsHead" ColumnName="IsHead" />
+                <ScalarProperty Name="IsMaster" ColumnName="IsMaster" />
+                <ScalarProperty Name="UnderHeadId" ColumnName="UnderHeadId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr8" FunctionName="AviaBuildDBModel.Store.pr8">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr8_Result">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="CehId" ColumnName="CehId" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="StartBuild" ColumnName="StartBuild" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr9" FunctionName="AviaBuildDBModel.Store.pr9">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AviaBuildDBModel.pr9_Result">
+                <ScalarProperty Name="BrigadeId" ColumnName="BrigadeId" />
+                <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
+                <ScalarProperty Name="IsBrigadier" ColumnName="IsBrigadier" />
+                <ScalarProperty Name="WorkerName" ColumnName="WorkerName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

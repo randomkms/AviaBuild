@@ -1,0 +1,26 @@
+﻿@model AviaBuildWeb.Models.EngTehProf
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EngTehProf</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EngTehProfName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EngTehProfName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdEngTehProf }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

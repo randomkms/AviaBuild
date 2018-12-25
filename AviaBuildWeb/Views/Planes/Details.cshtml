@@ -1,0 +1,42 @@
+﻿@model AviaBuildWeb.Models.Plane
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Plane</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaneName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlaneName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaneType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlaneType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Category)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPlane }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

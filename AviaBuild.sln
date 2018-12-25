@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AviaBuild", "AviaBuild\AviaBuild.csproj", "{22B1292F-74B0-45BC-8478-50E953F01FB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AviaBuildWeb", "AviaBuildWeb\AviaBuildWeb.csproj", "{D696F582-16DA-43EA-AC9E-DA7572FF5CC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{22B1292F-74B0-45BC-8478-50E953F01FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22B1292F-74B0-45BC-8478-50E953F01FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22B1292F-74B0-45BC-8478-50E953F01FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D696F582-16DA-43EA-AC9E-DA7572FF5CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D696F582-16DA-43EA-AC9E-DA7572FF5CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D696F582-16DA-43EA-AC9E-DA7572FF5CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D696F582-16DA-43EA-AC9E-DA7572FF5CC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

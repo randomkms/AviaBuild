@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AviaBuildWeb.Models.Brigade>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Area.IdArea)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area.IdArea)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdBrigade }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdBrigade }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdBrigade })
+        </td>
+    </tr>
+}
+
+</table>

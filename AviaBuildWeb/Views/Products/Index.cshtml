@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AviaBuildWeb.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartBuild)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndBuild)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ceh.IdCeh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestEquipment.TestEquipmentName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartBuild)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndBuild)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ceh.IdCeh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestEquipment.TestEquipmentName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdProduct }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdProduct }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdProduct })
+        </td>
+    </tr>
+}
+
+</table>

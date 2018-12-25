@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f9788f8741814339bafab2e41ca971bf" Name="Diagram1">
+        <EntityTypeShape EntityType="AviaBuildDBModel.Area" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Brigade" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Ceh" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.EngTehProf" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.EngTehWorker" Width="1.5" PointX="7.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.EngTehWorkerProf" Width="1.5" PointX="9.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Plane" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Product" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Prof" Width="1.5" PointX="9.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Rocket" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.TestEquipment" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Tester" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.TestLab" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Work" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.Worker" Width="1.5" PointX="9.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AviaBuildDBModel.WorkerProf" Width="1.5" PointX="12" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__Area__CehId__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__Brigade__AreaId__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__EngTehWor__AreaI__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__Worker__BrigadeI__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__Product__CehId__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__EngTehWor__EngTe__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__EngTehWor__EngTe__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__Plane__PlaneProd__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__Product__TestEqu__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__Rocket__RocketPr__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__Work__ProductID__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__WorkerPro__ProfI__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__TestEquip__TestL__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__Tester__TestLabI__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="AviaBuildDBModel.FK__WorkerPro__Worke__60A75C0F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

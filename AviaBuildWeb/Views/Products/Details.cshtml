@@ -1,0 +1,74 @@
+﻿@model AviaBuildWeb.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartBuild)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartBuild)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndBuild)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndBuild)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ceh.IdCeh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ceh.IdCeh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestEquipment.TestEquipmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestEquipment.TestEquipmentName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdProduct }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

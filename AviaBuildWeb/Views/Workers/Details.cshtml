@@ -1,0 +1,42 @@
+﻿@model AviaBuildWeb.Models.Worker
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Worker</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsBrigadier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsBrigadier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brigade.IdBrigade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brigade.IdBrigade)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdWorker }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

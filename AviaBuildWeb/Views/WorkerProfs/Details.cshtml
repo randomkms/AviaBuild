@@ -1,0 +1,50 @@
+﻿@model AviaBuildWeb.Models.WorkerProf
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WorkerProf</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartWorkDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartWorkDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuitDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuitDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prof.ProfName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prof.ProfName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker.WorkerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Worker.WorkerName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

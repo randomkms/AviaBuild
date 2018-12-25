@@ -1,0 +1,80 @@
+﻿@model AviaBuildWeb.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartBuild)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartBuild)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndBuild)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndBuild)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ceh.IdCeh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ceh.IdCeh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestEquipment.TestEquipmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestEquipment.TestEquipmentName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

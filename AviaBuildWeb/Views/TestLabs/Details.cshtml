@@ -1,0 +1,26 @@
+﻿@model AviaBuildWeb.Models.TestLab
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TestLab</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TestLabName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestLabName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTestLab }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

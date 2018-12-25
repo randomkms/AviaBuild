@@ -1,0 +1,56 @@
+﻿@model AviaBuildWeb.Models.EngTehWorkerProf
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EngTehWorkerProf</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartWorkDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartWorkDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuitDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuitDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EngTehProf.EngTehProfName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EngTehProf.EngTehProfName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EngTehWorker.EngTehWorkerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EngTehWorker.EngTehWorkerName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AviaBuildWeb.Models.EngTehWorkerProf>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartWorkDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuitDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EngTehProf.EngTehProfName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EngTehWorker.EngTehWorkerName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartWorkDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuitDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EngTehProf.EngTehProfName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EngTehWorker.EngTehWorkerName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
