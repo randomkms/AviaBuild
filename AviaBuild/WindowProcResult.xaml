@@ -44,7 +44,7 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <GroupBox Margin="5,0,5,5">
+        <GroupBox Margin="5,0,5,5" materialDesign:ColorZoneAssist.Mode="PrimaryDark">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Procedure result: " Foreground="White" />
@@ -279,14 +279,14 @@
                 </DataGrid>
             </Grid>
         </GroupBox>
-
+        
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Content="Back to procedures" HorizontalAlignment="Center" Margin="5" Click="BtnBack_Click"/>
+            <Button Style="{StaticResource MaterialDesignRaisedLightButton}" Content="Back to procedures" HorizontalAlignment="Center" Margin="5" Click="BtnBack_Click"/>
             <Button Grid.Column="1" Content="Create a report" HorizontalAlignment="Center" Margin="5" Click="BtnCreateReport_Click"/>
         </Grid>
     </Grid>

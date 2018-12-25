@@ -10,8 +10,10 @@
         Title="Tables"
         WindowStartupLocation="CenterScreen"
         Height="800"
+        MinWidth="600"
+        MinHeight="500"
         SizeToContent="Width"
-        ResizeMode="CanMinimize"
+        ResizeMode="CanResize"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
@@ -38,8 +40,8 @@
     </Window.Resources>
     <Grid DataContext="{Binding Source={x:Static local:DataHandler.Instance}}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -47,7 +49,7 @@
         </Grid.RowDefinitions>
 
         <materialDesign:ColorZone Grid.ColumnSpan="2"
-            Mode="PrimaryDark"
+            Mode="Dark"
             CornerRadius="3"
             materialDesign:ShadowAssist.ShadowDepth="Depth3"
             x:Name="ColorZoneTop">
@@ -66,9 +68,9 @@
             </Menu>
         </materialDesign:ColorZone>
 
-        <GroupBox Grid.Row="1" Header="Choose table" Margin="5" MinWidth="150">
+        <GroupBox Grid.Row="1" Header="Choose table" Margin="5" Width="250" materialDesign:ColorZoneAssist.Mode="PrimaryLight">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ItemsControl MinWidth="230" Margin="3,0">
+                <ItemsControl Margin="3,0">
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Areas}" x:Name="BtnAreas" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
@@ -207,7 +209,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <GroupBox Header="Current table" Margin="5">
+            <GroupBox Header="Current table" Margin="5" materialDesign:ColorZoneAssist.Mode="PrimaryLight">
                 <Grid MinWidth="500" Visibility="{helpers:VisibilityBinding CurrAccType, User, True}">
                     <DataGrid Visibility="{helpers:VisibilityBinding CurrTable, Areas}" x:Name="areaDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource areaViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
@@ -399,9 +401,9 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button Content="RollBack" Margin="5" Click="BtnRollBack_Click"/>
-                <Button Grid.Column="1" Content="Refresh" Margin="5" Click="BtnRefresh_Click"/>
-                <Button Grid.Column="2" Content="Save" Click="BtnSave_Click" Margin="5"/>
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}" Content="RollBack" Margin="5" Click="BtnRollBack_Click"/>
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}" Grid.Column="1" Content="Refresh" Margin="5" Click="BtnRefresh_Click" />
+                <Button Style="{StaticResource MaterialDesignRaisedAccentButton}" Grid.Column="2" Content="Save" Click="BtnSave_Click" Margin="5"/>
             </Grid>
         </Grid>
     </Grid>
