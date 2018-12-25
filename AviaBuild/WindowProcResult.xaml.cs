@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using Microsoft.Win32;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
@@ -31,6 +33,9 @@ namespace AviaBuild
         public List<pr11_Result> Pr11_Results { get; set; }
         public List<pr12_Result> Pr12_Results { get; set; }
         public List<pr13_Result> Pr13_Results { get; set; }
+
+        private ICollection currRes;
+        private string currPrName;
 
         public WindowProcResult()
         {
@@ -67,7 +72,7 @@ namespace AviaBuild
             pr12_ResultViewSource.Source = Pr12_Results;
             pr13_ResultViewSource.Source = Pr13_Results;
 
-            var AllResults = new List<CollectionViewSource>(13)
+            var AllResults = new List<CollectionViewSource>
             {
                 pr1_ResultViewSource,
                 pr2_ResultViewSource,
@@ -84,11 +89,14 @@ namespace AviaBuild
                 pr13_ResultViewSource
             };
 
-            foreach (var res in AllResults)
+            for (int i = 0; i < AllResults.Count; i++)
             {
+                var res = AllResults[i];
                 if (res.Source != null)
                 {
-                    TbxLinesCount.Text = (res.Source as ICollection).Count + " lines";
+                    currRes = res.Source as ICollection;
+                    currPrName = "Pr" + (i + 1) + "_Results";
+                    TbxLinesCount.Text = currRes.Count + " lines";
                     return;
                 }
             }
@@ -99,9 +107,35 @@ namespace AviaBuild
             Close();
         }
 
+        private void CreateReport(ICollection source, string reportName)
+        {
+            try
+            {
+                var rd = new ReportDocument();
+                rd.Load("Reports\\" + reportName + ".rpt");
+                rd.SetDataSource(source);
+                var saveFileDlg = new SaveFileDialog
+                {
+                    FileName = reportName,
+                    DefaultExt = ".pdf",
+                    Filter = "Pdf documents (.pdf)|*.pdf",
+                    InitialDirectory = Environment.CurrentDirectory
+                };
+
+                if (saveFileDlg.ShowDialog() == true)
+                {
+                    rd.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, saveFileDlg.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void BtnCreateReport_Click(object sender, RoutedEventArgs e)
         {
-
+            CreateReport(currRes, currPrName + "Report");
         }
     }
 }

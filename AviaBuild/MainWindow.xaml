@@ -72,7 +72,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Areas}" x:Name="BtnAreas" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Areas" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -80,7 +80,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Planes}" x:Name="BtnPlanes" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Planes" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -88,7 +88,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Rockets}" x:Name="BtnRockets" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Rockets" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -96,7 +96,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Products}" x:Name="BtnProducts" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Products" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -104,7 +104,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Brigades}" x:Name="BtnBrigades" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Brigades" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -112,7 +112,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Cehs}" x:Name="BtnCehs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Cehs" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -120,7 +120,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=EngTehProfs}" x:Name="BtnEngTehProfs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="EngTehProfs" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -128,7 +128,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=EngTehWorkers}" x:Name="BtnEngTehWorkers" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="EngTehWorkers" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -136,7 +136,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=EngTehWorkerProfs}" x:Name="BtnEngTehWorkerProfs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="EngTehWorkerProfs" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -144,7 +144,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Profs}" x:Name="BtnProfs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Profs" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -152,7 +152,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=TestEquipments}" x:Name="BtnTestEquipments" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="TestEquipments" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -160,7 +160,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Testers}" x:Name="BtnTesters" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Testers" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -168,7 +168,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=TestLabs}" x:Name="BtnTestLabs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="TestLabs" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -176,7 +176,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Works}" x:Name="BtnWorks" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Works" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -184,7 +184,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=Workers}" x:Name="BtnWorkers" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Workers" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
@@ -192,7 +192,7 @@
                     <Button Visibility="{Binding CurrAccType, Converter={local:AccTypeToVisibilityConverter}, ConverterParameter=WorkerProfs}" x:Name="BtnWorkerProfs" Margin="0, 5" HorizontalContentAlignment="Stretch" Click="BtnChooseTable_Click">
                         <Button.Content>
                             <Grid>
-                                <materialDesign:PackIcon Kind="Aeroplane" HorizontalAlignment="Left"/>
+                                <materialDesign:PackIcon Kind="TableLarge" HorizontalAlignment="Left"/>
                                 <TextBlock Text="WorkerProfs" TextAlignment="Center" Margin="0,1,0,0" />
                             </Grid>
                         </Button.Content>
