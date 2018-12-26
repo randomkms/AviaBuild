@@ -31,9 +31,10 @@ namespace AviaBuild
             InitializeComponent();
         }
 
-        private static AviaBuildDBEntities Connect(string userName, string password)
+        private static AviaBuildDBEntities Connect(string userName, string password, out string connectionString)
         {
             AviaBuildDBEntities dbContext = null;
+            connectionString = null;
             try
             {
                 var entityString = new EntityConnectionStringBuilder()
@@ -44,7 +45,8 @@ namespace AviaBuild
                 };
                 entityString.ProviderConnectionString += ";user id=" + userName + ";Password=" + password;
 
-                dbContext = new AviaBuildDBEntities(entityString.ConnectionString);
+                connectionString = entityString.ConnectionString;
+                dbContext = new AviaBuildDBEntities(connectionString);
                 if (dbContext.Database.Exists())
                     return dbContext;
             }
@@ -75,13 +77,14 @@ namespace AviaBuild
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             string login = tbxLogin.Text;
-            var context = Connect(login, tbxPass.Password);
+            var context = Connect(login, tbxPass.Password, out string connectionString);
             if (context == null)
             {
                 CustomMessage.Show("Invalid login or password!", this);
                 return;
             }
 
+            DataHandler.Instance.CurrConnectionString = connectionString;
             DataHandler.Instance.CurrAccType = GetAccType(login);
             new MainWindow(context).Show();
             Close();

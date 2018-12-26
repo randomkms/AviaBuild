@@ -52,6 +52,8 @@ namespace AviaBuild
 
         public static DataHandler Instance { get; } = new DataHandler();
 
+        public string CurrConnectionString { get; set; }
+
         public AccountTypes CurrAccType { get => _accType; set { _accType = value; OnPropertyChanged(); } }
 
         public TableNames CurrTable { get => _currTable; set { _currTable = value; OnPropertyChanged(); } }

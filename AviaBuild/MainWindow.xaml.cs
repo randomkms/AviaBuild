@@ -21,6 +21,23 @@ namespace AviaBuild
 {
     public partial class MainWindow : Window
     {
+        private CollectionViewSource areaViewSource;
+        private CollectionViewSource planesViewSource;
+        private CollectionViewSource rocketViewSource;
+        private CollectionViewSource productViewSource;
+        private CollectionViewSource brigadeViewSource;
+        private CollectionViewSource cehViewSource;
+        private CollectionViewSource engTehProfViewSource;
+        private CollectionViewSource engTehWorkerViewSource;
+        private CollectionViewSource engTehWorkerProfViewSource;
+        private CollectionViewSource profViewSource;
+        private CollectionViewSource testEquipmentViewSource;
+        private CollectionViewSource testerViewSource;
+        private CollectionViewSource testLabViewSource;
+        private CollectionViewSource workViewSource;
+        private CollectionViewSource workerViewSource;
+        private CollectionViewSource workerProfViewSource;
+
         private AviaBuildDBEntities context;
 
         public MainWindow(AviaBuildDBEntities context)
@@ -31,41 +48,24 @@ namespace AviaBuild
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var areaViewSource = (CollectionViewSource)this.FindResource("areaViewSource");
-            var planesViewSource = (CollectionViewSource)this.FindResource("planeViewSource");
-            var rocketViewSource = (CollectionViewSource)this.FindResource("rocketViewSource");
-            var productViewSource = (CollectionViewSource)this.FindResource("productViewSource");
-            var brigadeViewSource = (CollectionViewSource)this.FindResource("brigadeViewSource");
-            var cehViewSource = (CollectionViewSource)this.FindResource("cehViewSource");
-            var engTehProfViewSource = (CollectionViewSource)this.FindResource("engTehProfViewSource");
-            var engTehWorkerViewSource = (CollectionViewSource)this.FindResource("engTehWorkerViewSource");
-            var engTehWorkerProfViewSource = (CollectionViewSource)this.FindResource("engTehWorkerProfViewSource");
-            var profViewSource = (CollectionViewSource)this.FindResource("profViewSource");
-            var testEquipmentViewSource = (CollectionViewSource)this.FindResource("testEquipmentViewSource");
-            var testerViewSource = (CollectionViewSource)this.FindResource("testerViewSource");
-            var testLabViewSource = (CollectionViewSource)this.FindResource("testLabViewSource");
-            var workViewSource = (CollectionViewSource)this.FindResource("workViewSource");
-            var workerViewSource = (CollectionViewSource)this.FindResource("workerViewSource");
-            var workerProfViewSource = (CollectionViewSource)this.FindResource("workerProfViewSource");
+            this.areaViewSource = (CollectionViewSource)this.FindResource("areaViewSource");
+            this.planesViewSource = (CollectionViewSource)this.FindResource("planeViewSource");
+            this.rocketViewSource = (CollectionViewSource)this.FindResource("rocketViewSource");
+            this.productViewSource = (CollectionViewSource)this.FindResource("productViewSource");
+            this.brigadeViewSource = (CollectionViewSource)this.FindResource("brigadeViewSource");
+            this.cehViewSource = (CollectionViewSource)this.FindResource("cehViewSource");
+            this.engTehProfViewSource = (CollectionViewSource)this.FindResource("engTehProfViewSource");
+            this.engTehWorkerViewSource = (CollectionViewSource)this.FindResource("engTehWorkerViewSource");
+            this.engTehWorkerProfViewSource = (CollectionViewSource)this.FindResource("engTehWorkerProfViewSource");
+            this.profViewSource = (CollectionViewSource)this.FindResource("profViewSource");
+            this.testEquipmentViewSource = (CollectionViewSource)this.FindResource("testEquipmentViewSource");
+            this.testerViewSource = (CollectionViewSource)this.FindResource("testerViewSource");
+            this.testLabViewSource = (CollectionViewSource)this.FindResource("testLabViewSource");
+            this.workViewSource = (CollectionViewSource)this.FindResource("workViewSource");
+            this.workerViewSource = (CollectionViewSource)this.FindResource("workerViewSource");
+            this.workerProfViewSource = (CollectionViewSource)this.FindResource("workerProfViewSource");
 
             LoadAll();
-
-            areaViewSource.Source = context.Areas.Local;
-            planesViewSource.Source = context.Planes.Local;
-            rocketViewSource.Source = context.Rockets.Local;
-            productViewSource.Source = context.Products.Local;
-            brigadeViewSource.Source = context.Brigades.Local;
-            cehViewSource.Source = context.Cehs.Local;
-            engTehProfViewSource.Source = context.EngTehProfs.Local;
-            engTehWorkerViewSource.Source = context.EngTehWorkers.Local;
-            engTehWorkerProfViewSource.Source = context.EngTehWorkerProfs.Local;
-            profViewSource.Source = context.Profs.Local;
-            testEquipmentViewSource.Source = context.TestEquipments.Local;
-            testerViewSource.Source = context.Testers.Local;
-            testLabViewSource.Source = context.TestLabs.Local;
-            workViewSource.Source = context.Works.Local;
-            workerViewSource.Source = context.Workers.Local;
-            workerProfViewSource.Source = context.WorkerProfs.Local;
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -130,9 +130,32 @@ namespace AviaBuild
             HelpersMethods.TryFunc(context.Works.Load);
             HelpersMethods.TryFunc(context.Workers.Load);
             HelpersMethods.TryFunc(context.WorkerProfs.Load);
+
+            areaViewSource.Source = context.Areas.Local;
+            planesViewSource.Source = context.Planes.Local;
+            rocketViewSource.Source = context.Rockets.Local;
+            productViewSource.Source = context.Products.Local;
+            brigadeViewSource.Source = context.Brigades.Local;
+            cehViewSource.Source = context.Cehs.Local;
+            engTehProfViewSource.Source = context.EngTehProfs.Local;
+            engTehWorkerViewSource.Source = context.EngTehWorkers.Local;
+            engTehWorkerProfViewSource.Source = context.EngTehWorkerProfs.Local;
+            profViewSource.Source = context.Profs.Local;
+            testEquipmentViewSource.Source = context.TestEquipments.Local;
+            testerViewSource.Source = context.Testers.Local;
+            testLabViewSource.Source = context.TestLabs.Local;
+            workViewSource.Source = context.Works.Local;
+            workerViewSource.Source = context.Workers.Local;
+            workerProfViewSource.Source = context.WorkerProfs.Local;
         }
 
         private void RefreshAll()
+        {
+            context.Dispose();
+            context = new AviaBuildDBEntities(DataHandler.Instance.CurrConnectionString);
+        }
+
+        private void PullAll()
         {
             foreach (var entity in context.ChangeTracker.Entries())
             {
