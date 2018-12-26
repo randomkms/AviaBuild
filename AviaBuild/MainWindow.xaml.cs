@@ -77,6 +77,7 @@ namespace AviaBuild
             catch (Exception ex)
             {
                 CustomMessage.Show(ex.Message, this);
+                return;
             }
 
             CustomMessage.Show("Successfully saved", this, MessageType.Success);
@@ -92,6 +93,7 @@ namespace AviaBuild
             catch (Exception ex)
             {
                 CustomMessage.Show(ex.Message, this);
+                return;
             }
 
             
@@ -107,6 +109,7 @@ namespace AviaBuild
             catch (Exception ex)
             {
                 CustomMessage.Show(ex.Message, this);
+                return;
             }
 
             CustomMessage.Show("Successfully rollback", this, MessageType.Success);
