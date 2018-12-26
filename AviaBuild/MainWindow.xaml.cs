@@ -76,7 +76,8 @@ namespace AviaBuild
             }
             catch (Exception ex)
             {
-                CustomMessage.Show(ex.Message, this);
+                Console.WriteLine(ex);
+                CustomMessage.Show("Save failed - invalid data", this);
                 return;
             }
 
@@ -92,7 +93,8 @@ namespace AviaBuild
             }
             catch (Exception ex)
             {
-                CustomMessage.Show(ex.Message, this);
+                Console.WriteLine(ex);
+                CustomMessage.Show("Refresh failed", this);
                 return;
             }
 
@@ -108,7 +110,8 @@ namespace AviaBuild
             }
             catch (Exception ex)
             {
-                CustomMessage.Show(ex.Message, this);
+                Console.WriteLine(ex);
+                CustomMessage.Show("Rollback failed", this);
                 return;
             }
 
