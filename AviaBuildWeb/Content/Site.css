@@ -68,3 +68,8 @@ textarea {
 a {
     color: green !important;
 }
+
+h2, .h2 {
+    opacity: 0 !important;
+    height: 0 !important;
+}
